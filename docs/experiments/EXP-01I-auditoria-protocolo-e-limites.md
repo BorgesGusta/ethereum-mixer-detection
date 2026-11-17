@@ -1,6 +1,6 @@
 # EXP-01I — Auditoria de protocolo e hipóteses para a divergência 63 × 9
 
-**Data:** 17/11/2026. **Status:** auditoria documental dos códigos e do artigo **concluída**; etapa quantitativa 13 **preparada no notebook 01, mas ainda NÃO executada**. Os dados, pesos, limiar do protocolo original e rótulos não foram alterados.
+**Data:** 17/11/2026. **Status:** auditoria documental concluída e **etapa 13 executada em 17/11/2026 às 14:29 UTC**. Resultados quantitativos e fontes: [EXP-01J](EXP-01J-resultados-sensibilidade-63x9.md). Os dados, pesos, limiar do protocolo original e rótulos não foram alterados.
 
 ## Materiais efetivamente comparados
 
@@ -39,7 +39,7 @@ Etapa 13 anexada ao **mesmo notebook canônico 01**:
 3. Fixar **o mesmo modelo-base** e variar só `n_tx` no conjunto de teste (1, 5, 10, 20), mostrando mudança do universo elegível e quantos pools são recuperados. Também contabilizar separadamente as janelas com features não finitas, evitando excluí-las silenciosamente. A variante com `n_tx=1` testa a hipótese de classificação de todos os destinatários, enquanto o artigo explicita `>=10` apenas para seleção dos negativos.
 4. Registrar diversidade dos contratos/dias do treino. A análise usa o conjunto **existente**, sem alterar seleção dos 100 negativos nem Router. Não atribuir causa da diferença 63 × 9 a um fator sem evidência empírica.
 
-**Saídas previstas após execução no Colab:** `composicao_treino.csv`, `comparacao_cenarios.csv`, `comparacao_elegibilidade.csv`, `alertas_cenarios.csv`, `grafico_sensibilidade.png` e `manifesto.json` em pasta exclusiva no Drive.
+**Saídas produzidas e verificadas no Drive ([pasta de execução](https://drive.google.com/drive/folders/1AFO6k3ShxdsZABU1OoFBXez7Dd8FngOx)):** `composicao_treino.csv`, `comparacao_cenarios.csv`, `comparacao_elegibilidade.csv`, `alertas_cenarios.csv`, `grafico_sensibilidade.png` e `manifesto.json` em pasta exclusiva no Drive.
 
 ## Como escrever a limitação no artigo, se permanecer sem explicação
 
@@ -58,3 +58,10 @@ O principal resultado é **reprodução parcial** do método e recuperação dos
 - Equivalência dos 100 negativos e do universo de inferência dos autores; acesso aos códigos ou resposta dos autores se possível.
 - Executar etapa 13 e interpretar efeitos, sem otimizar retrospectivamente para 63.
 - Depois definir e executar experimentos temporais com divisões por contrato e período, negativos independentes e medidas de precisão/recall sob ground truth auditado.
+
+## Adendo de resultados da etapa 13 (executada)
+
+- No filtro original `n_tx>=10`: **9 alertas**; no cenário sem corte adicional (`n_tx>=1`): **49 alertas**. Outros cortes: `>=5` → 14 e `>=20` → 7. São 40 alertas no universo `1<=n_tx<10` do nosso próprio modelo; a distância para os **63 do artigo persiste**, inclusive com `min_tx=1`.
+- Balanceamento e semente (7, 42, 123) conservaram os mesmos 9 endereços no universo `n_tx>=10`, exceto a variante somente pesos, que adicionou `0xd191...76f` (score 0,51); nenhuma explica os 63.
+- A composição do treino foi confirmada: 23 positivas, **um contrato em 23 dias**, e 100 negativas de **100 endereços em um só dia**. CV por linha não representa generalização para contratos novos.
+- **Conclusão editorial:** tratar 63 × 9 como divergência de reprodução não resolvida, com um fator de sensibilidade mensurado (elegibilidade); não atribuir causa específica sem código/amostras originais dos autores. [Relatório EXP-01J](EXP-01J-resultados-sensibilidade-63x9.md).

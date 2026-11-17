@@ -98,7 +98,8 @@
 - [x] **Preparar e sincronizar etapa 13 no mesmo notebook 01**: cruzamento de balanceamento, sementes e filtros de elegibilidade, limiar fixo 0,50; registro de CSVs e manifesto. **Execução no Colab pendente.**
 - [x] Redigir [seção provisória de limitações e contribuições](manuscrito/limitacoes-e-contribuicoes.md), sem alegar superioridade preditiva ou causalidade não demonstrada.
 - [ ] **Executar etapa 13 no Colab e auditar resultados**, diferenciando hipóteses, variações experimentais e fatos da implementação dos autores.
-- [ ] Redigir protocolo de avaliação por **tempo e contrato** e ground truth externo auditado, sem vazamento por janelas do mesmo pool.
+- [x] Redigir [EXP-02 — Protocolo temporal e por contrato](experiments/EXP-02-protocolo-temporal-contrato.md) com critérios de prontidão, baseline, métricas, guardas contra vazamento e limitações de rotulagem. **Protocolo planejado, sem execução de novos modelos.**
+- [ ] Inventariar múltiplos contratos positivos e negativos auditados por período antes de executar EXP-02.
 
 ## Evidências principais
 

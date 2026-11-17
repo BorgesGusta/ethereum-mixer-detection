@@ -1,52 +1,68 @@
-# Cronograma por marcos — Experimentos, artigo e apresentação
+# Plano de fechamento — artigo Overleaf e apresentação
 
-**Atualizado: 17/11/2026.** Planejamento sem promessa de prazo.
+**Versão:** 17/11/2026. **Situação:** manuscrito **v0.1 redigido, não submetido**; roteiro de apresentação inicial preparado. Não confundir documento LaTeX existente com PDF compilado ou aprovado.
 
-## Onde estamos
+## Marco 1 — Validar a edição do artigo no Overleaf (próxima ação)
 
-| Etapa | Situação | Documento |
+**Arquivos fonte:** [`main.tex`](../../artigo/overleaf/main.tex), [`referencias.bib`](../../artigo/overleaf/referencias.bib), [`figuras/sensibilidade.tex`](../../artigo/overleaf/figuras/sensibilidade.tex), [`README.md`](../../artigo/overleaf/README.md).
+
+- [x] Rascunho LaTeX v0.1 com resumo, abstract, introdução, fundamentos, métodos, resultados, discussão, ameaças, conclusão e referências.
+- [x] Tabelas de paridade 63×9, sensibilidade 49/14/9/7 e seis contratos 2026.
+- [x] EXP-02C consta como executado: 3 transações MCT-XEN, 83/83/300 logs (466) e 18 transações amostradas completas.
+- [ ] Abrir no Overleaf e **compilar com pdfLaTeX + BibTeX**; registrar log, número de páginas e mensagens de erro/overfull.
+- [ ] Inspecionar o PDF resultante: português e acentos; tabelas dentro das margens; legendas; bibliografia e números corretos.
+- [ ] Reestruturar para o template oficial **somente quando a conferência/trilha for escolhida**.
+- [ ] Conferir autores e afiliações — e anonimização, se exigida.
+
+**Atenção:** não foi gerado ZIP pronto nem verificado o build no Overleaf neste momento. Não afirmar compilação concluída.
+
+## Marco 2 — Revisão científica do manuscrito com material existente
+
+- [x] Descrever EXP-01J, EXP-02A, EXP-02B e EXP-02C como executados e com fontes rastreáveis.
+- [x] Assinalar que 63 versus 9 é divergência **sem causa comprovada**, apesar de sensibilidade a critérios de elegibilidade ter sido demonstrada.
+- [x] Apresentar as correspondências 20/20 (2020) e 18/18 (amostra 2026) sem extrapolar para toda a população.
+- [x] Diferenciar três pools Tornado conhecidos de seis outros serviços apenas **identificados documental/funcionalmente**.
+- [ ] Conferir bibliografia e DOI em cada PDF; ampliar trabalhos relacionados com referências completas.
+- [ ] Preparar figura do fluxo metodológico em formato reproduzível e gráfico com fonte dos dados.
+- [ ] Congelar versão do texto e dos resultados quando terminarem as revisões, registrando commit e hashes.
+
+## Marco 3 — Experimentação adicional mínima (contribuição original)
+
+- [x] Completar paginação dos logs da **amostra de 18 transações** no EXP-02C.
+- [ ] Determinar implementação histórica dos proxies OKX, MCT-XEN e Wormhole em 15/01/2026, ou marcar cada caso inconclusivo.
+- [ ] Expandir auditoria por política pré-definida e incluir amostra de **não alertas**, para reduzir viés de verificação.
+- [ ] Construir rótulos negativos auditados com dois revisores e positivos de **outros protocolos mixer**.
+- [ ] Predefinir RF original vs heurística funcional vs variante contextual; treino, validação e teste separados por **contrato e período**.
+- [ ] Medir precision, recall, F1 e PR-AUC somente em teste com ground truth válido; registrar amostras e limites.
+- [ ] Se testes adicionais se mostrarem inviáveis, manter foco de artigo **em reprodutibilidade, auditoria e sensibilidade de elegibilidade**, sem afirmar detector melhor.
+
+## Marco 4 — Apresentação científica
+
+[Roteiro inicial de 10 slides](../apresentacao/roteiro-cientifico-v0.md). A apresentação não precisa afirmar melhorias ainda não medidas.
+
+| Slide | Título | Uma conclusão defendível |
 |---|---|---|
-| Reprodução do SBSeg 2025 | **Concluída parcialmente:** 3/3 pools, 9 vs 63 alertas | EXP-01J |
-| Sensibilidade à elegibilidade | **Concluída:** 49/14/9/7 alertas para min_tx 1/5/10/20 | EXP-01J |
-| Auditoria 2020/2026 | **Concluída nas amostras:** 20 hashes em 2020, 18 hashes em 2026 | EXP-01G e EXP-02B |
-| Paginação MCT-XEN | **Concluída** para as 3 transações amostradas: 83+83+300 = 466 logs; 18/18 amostras com paginação completa | EXP-02C |
-| Histórico de proxies e dois seletores | **Pendente:** dados insuficientes | EXP-02C |
-| Ground truth independente | **Pendente:** seis contratos não são negativos confirmados | EXP-02B |
-| Holdout por protocolo/tempo e ganho contextual | **Não executado:** depende de múltiplos positivos e negativos auditados | EXP-02 |
-| Manuscrito editável | **Iniciado:** main.tex, referencias.bib e figura editável | artigo/overleaf |
-| Apresentação científica | **Roteiro iniciado:** slides finais após congelar resultados | docs/apresentacao |
+| 1 | Pergunta do artigo | Mixer não é sinônimo de ilegalidade |
+| 2 | Problema de classificação | DEX, bridge e mixer podem compartilhar estatísticas |
+| 3 | Trabalho-base | Quatro features + Random Forest |
+| 4 | Dados e rótulos | 23 positivos de um contrato, 100 negativos de um dia |
+| 5 | Reprodução | 3/3 pools detectados; 63 vs 9 não resolvido |
+| 6 | Sensibilidade | Mínimo de transações altera alertas 49/14/9/7 |
+| 7 | Auditoria externa | 20/20 hashes em 2020 e 18/18 amostras em 2026 |
+| 8 | Contexto funcional | send / swapAndBridge / ccipSend / batchClaimRank / deliver |
+| 9 | Cobertura e rótulos | 466 logs nos 3 hashes MCT-XEN; 6 rótulos indeterminados |
+| 10 | Conclusão | Auditoria e interpretação mais rigorosas, não maior acurácia demonstrada |
 
-## Estratégia de publicação
+**Critérios:** adaptar número de slides e duração à chamada; conferir que gráficos/tabelas são legíveis; preparar falas e 6 perguntas difíceis; ensaiar com tempo real.
 
-**Rota A — auditoria/reprodutibilidade:** descreve os resultados demonstrados; escrevê-la **já**. Pode ser submetida a uma trilha adequada de métodos/estudos de caso se houver avaliação acadêmica, bibliografia validada e contribuição suficiente.
+## Marco 5 — Submissão
 
-**Rota B — melhoria contextual:** exige ground truth externo e teste sem vazamento em contratos/protocolos novos. Não prometer desempenho superior antes dos dados; se houver resultados robustos, atualizar título, método e conclusões.
+- [ ] Selecionar conferência/trilha **com chamada oficial aberta ou calendário confirmado**, pesquisar escopo, extensão de páginas, template, anonimização, modalidade e prazos.
+- [ ] Revisão por orientador/coautores; aprovação de autoria e versão.
+- [ ] Conferir direitos de dados brutos e política de disponibilização/artefatos.
+- [ ] Preparar PDF final, fontes LaTeX, repositório versionado, informações de reprodução e anexos permitidos.
+- [ ] Submeter apenas após revisão final. **Aceite não pode ser prometido**.
 
-## O que escrever desde já
+## Ordem de execução recomendada
 
-- [x] Introdução, fundamentação, método e limitações preliminares.
-- [x] Tabelas de reprodução, sensibilidade e auditoria em LaTeX.
-- [x] Resumo PT/EN provisório e bibliografia `.bib`.
-- [ ] Conferir autores, instituições, referências e DOI exatos.
-- [ ] Figuras finais adicionais com proveniência e legendas.
-- [ ] Revisão por professor/orientador e autorizações.
-- [ ] Conferir chamada/limite de páginas/template oficial do congresso escolhido.
-
-## Experimentos restantes sem estender indefinidamente a pesquisa
-
-1. Avaliar a viabilidade de obter implementação histórica dos três proxies; se não, registrar explicitamente como inconclusivo.
-2. Elaborar rubrica de rótulos com duas revisões independentes e cobertura de transações. Incluir pelo menos amostra de não alertas sem seleção pelo score.
-3. Tentar localizar positivos de mixers de outro protocolo, com contratos e período verificáveis.
-4. Só então decidir **se** a comparação contextual é viável; caso negativo, concluir pela **rota A** com dados existentes e limitações.
-5. Separar todas as métricas de população não rotulada (número de alertas) das métricas com ground truth.
-
-## Apresentação
-
-Roteiro interno já pode ser usado para seminário. A apresentação final deve usar exatamente os números do manuscrito congelado, sem transformar a hipótese contextual em resultado. Priorizar 3 figuras: pipeline auditável, sensibilidade de alertas, escada de evidências (hash → log → função → rótulo). Questões prováveis: 63 vs 9, filtro de elegibilidade, um único pool positivo no treino, falsos positivos não validados e o papel de proxies/Router.
-
-## Links
-
-- [Manuscrito editável para Overleaf](../../artigo/overleaf/main.tex)
-- [Referências BibTeX](../../artigo/overleaf/referencias.bib)
-- [Gráfico editável](../../artigo/overleaf/figuras/sensibilidade.tex)
-- [Relatório EXP-02C](../experiments/EXP-02C-resultados-logs-e-seletores.md)
+**Agora:** compilar o manuscrito v0.1 no Overleaf e corrigir apresentação gráfica. **Em paralelo:** revisar literatura e consolidar resultados do EXP-02C. **Depois:** escolher entre fechar artigo de auditoria/reprodutibilidade ou realizar avaliação contextual adicional, dependendo da disponibilidade de ground truth independente. **Só então:** formatar para a chamada escolhida e finalizar os slides.

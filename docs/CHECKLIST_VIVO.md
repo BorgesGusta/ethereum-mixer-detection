@@ -113,6 +113,7 @@
 ### Biblioteca de estudo, revisão bibliográfica e preparação de submissão (17/11/2026)
 - [x] Criar [biblioteca NotebookLM no Drive](https://drive.google.com/drive/folders/1gnpcC5Y9yAZankjGSk5hIsW-nBXFmMYs) com oito subpastas, conceitos, evolução e suporte à preparação do manuscrito.
 - [x] Inserir **5 PDFs enviados pelo pesquisador** (Akopova, GNN 2025, StealthLink 2025, FPTracer 2026, MixGuard 2026) e cópia do **artigo-base SBSeg 2025** na pasta de artigos.
+- [x] **Acrescentar Aula 06 (PDF + Markdown) ao NotebookLM** com resultados reais do EXP-02B, exercícios e gabarito: [PDF](https://drive.google.com/file/d/1j0JFg75edoTnEo1La2_R5enULPAwSzJU/view), [texto versionado](estudo/aula-06-resultados-auditoria-exp02b.md).
 - [x] Preparar e enviar **10 PDFs didáticos**: guia de leitura, 4 aulas, linha do tempo EXP-01/02, revisão bibliográfica comparativa, fichamento de artigos adicionais, flashcards/laboratórios e plano de artigo.
 - [x] Versionar [roteiro de estudos](estudo/README.md), [histórico experimental](estudo/evolucao-experimental.md), [revisão](literatura/revisao-bibliografica-2026.md), [links de 5 PDFs adicionais](literatura/artigos-adicionais-links.md) e [plano de publicação](manuscrito/plano-de-publicacao.md).
 - [ ] **PDFs adicionais:** baixar manualmente os 5 artigos com links diretos e colocá-los em [04_ARTIGOS_ADICIONAIS](https://drive.google.com/drive/folders/1aDqUFahABvsNuAeGbAeYh950nXFpmhan); transferência direta externa não disponível nesta sessão.

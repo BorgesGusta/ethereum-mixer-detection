@@ -40,3 +40,11 @@ A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; não é
 Se a pasta `Segurança de Redes de Computadores/Projeto_Mixers_Ethereum` não aparecer em `/content/drive/MyDrive`, **não criar atalhos adicionais nem mudar para o Drive de Bruno**. O `01_reproducao.ipynb` atualizado utiliza a API Google Drive com autenticação Google Colab e os IDs **das cópias do Drive próprio**, validando SHA-256 e salvando os relatórios no diretório `results/`. Não depende de caminho montado nem requer `GITHUB_TOKEN`.
 
 A execução completa permanece **pendente de validação no Colab**. Cópia de trabalho no [Drive próprio](https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view).
+
+## Notebook 04 — Auditoria visual
+
+[GitHub: 04_auditoria.ipynb](04_auditoria.ipynb) · [executar no Drive próprio](https://drive.google.com/file/d/1qsqTiOHSdJhSIiK1xGXAp83IpO-T0oq8/view).
+
+Publicado em 17/11/2026: 11 células (4 de código), com 3 gráficos explicados e salvamento opcional de relatórios. Audita resultados já salvos, portanto **não substitui auditoria independente dos dumps**. Sua execução no Colab ainda não foi verificada.
+
+Ver [padrão didático](../docs/07_PADRAO_NOTEBOOKS.md).

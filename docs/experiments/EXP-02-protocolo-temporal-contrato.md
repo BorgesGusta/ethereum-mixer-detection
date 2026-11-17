@@ -44,6 +44,22 @@
 - **Se houver novos resultados de avaliação:** apresentar resultados separados dos 63/9, com amostras, splits, métricas e limitações próprias.
 - **Se um provedor não retornar dados históricos:** marcar inconclusivo e não substituir por rótulo negativo.
 
+
+## Inventário inicial de disponibilidade no Drive (17/11/2026)
+
+Verificação de **existência de arquivos**, sem validar ainda identidade, qualidade dos rótulos nem distribuição dos contratos:
+
+| Período/uso | Artefato disponível | ID da cópia no Drive |
+|---|---|---|
+| Treino março/2025 | `data/processed/features_treino.parquet` (23 positivas de um contrato, 100 negativas, já auditadas na etapa 13) | `1jUHAq6H9FKSgptv4nsCoOmFILH4Py_2S` |
+| Teste 29/10/2020 | `data/processed/features_teste_20201029.parquet` | `1g22eCccxC4v_S2RmxPhFZyzfF1ARuzPk` |
+| Potencial avaliação 15/01/2026 | `data/processed/features_2026-01-15.parquet` | `12NHTZGd_-RPIt6c2gYlEjO0WZHcfyqQl` |
+| Fonte intermediária 15/01/2026 | `data/interim/dia_20260115.parquet` | `1xU7XO4QpQzIGF8ZUoChFJ59W29LIOJuu` |
+| Auditoria de negativos | `data/interim/negativos_final.csv` e `negativos_decisao.csv` | `1atHw21PT0G5nAB5wllKjYS5qDpmArTnx`; `1L6tCnPTsTOjWtuWFH-ysRPxVdwv0kC_4` |
+| Dados brutos 2026 | `data/raw/blockchair_ethereum_transactions_20260115.tsv.gz` | `1eXEhaixATAiDAa1O0sUp6ThkfPDKtLyn` |
+
+**Limitação:** há material para começar a preparação de um ensaio temporal 2025→2026 e confronto descritivo com 2020, **mas ainda não sabemos se há positivos de múltiplos protocolos/contratos verificados em 2026**, nem negativos auditados de modo independente para esse período. Não anunciar precision/recall/F1 externas antes de construir ground truth. O primeiro passo prático do EXP-02 será inventariar `recipient`, `n_tx`, `tornado` e cobertura do parquet 2026, sem treinar novo modelo nem alterar a referência de 2020.
+
 ## Próxima ação após EXP-01I
 
 Inventariar quantos contratos positivos **distintos** existem em 2020, 2025 e 2026 com cobertura auditada; inventariar negativos verificáveis por data e protocolo. Somente então decidir quais divisões por contrato/período são factíveis.

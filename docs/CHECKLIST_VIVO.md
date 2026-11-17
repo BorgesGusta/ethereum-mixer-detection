@@ -7,6 +7,9 @@
 
 ## Estado do projeto
 
+**Comunicação científica:** [x] E-mail enviado aos dois autores em 17/11/2026 solicitando detalhes metodológicos, dados/código e lista dos 63 endereços. [ ] Resposta recebida e analisada. O envio não implica concordância ou resposta dos autores.
+
+
 ### A — Organização e rastreabilidade
 - [x] Repositório oficial GitHub criado e conectado
 - [x] Drive próprio `Projeto_Mixers_Ethereum` adotado; atalho da pasta de Bruno removido, originais preservados
@@ -23,6 +26,8 @@
 - [x] Identificar 3/3 pools Tornado de referência e 239 transações associadas a 0.1/1/10 ETH
 - [x] Executar notebook consolidado 01, salvar CSVs e comparar CV fold a fold com o legado
 - [ ] Explicar **por que artigo identificou 63 endereços, mas nossa reprodução identificou 9**, mesmo com três pools corretos
+- [x] Conferir que 1.114.702 transações e as 239 do Tornado Cash coincidem com o artigo no recorte 2020
+- [x] Localizar diferença de contagem de endereços: **230.658 destinatários únicos**, exatamente o número publicado; 294.232 remetentes únicos e 377.296 na união. Verificar no artigo se 'endereços distintos' corresponde à projeção de destinatários.
 - [ ] Conferir identificação exata e scores dos nove endereços versus os relatórios legados
 - [ ] Reconstituir equivalência de amostragem/rotulagem dos 100 negativos e 23 positivos e das regras de elegibilidade
 - [ ] Auditar toda diferença de protocolo, features e limiares em relação ao artigo **sem afirmar identidade não demonstrada**
@@ -61,4 +66,4 @@
 - [Resultados legados 2020](https://drive.google.com/drive/folders/1iZKAeZPEb6JOlH8KfqsR6-wqI1ygmojI)
 - [Padrão dos notebooks](07_PADRAO_NOTEBOOKS.md)
 
-**Próxima ação prioritária:** investigar quantitativamente a diferença 63 vs 9 (população elegível, filtragem `n_tx`, agregação contrato-dia, reamostragem, negativos, discretização, score e regra de inferência). Só depois declarar a reprodução completa ou prosseguir a testes confirmatórios temporais.
+**Próxima ação prioritária:** investigar quantitativamente a diferença 63 vs 9 (população elegível, filtragem `n_tx`, agregação contrato-dia, reamostragem, negativos, discretização, score e regra de inferência). Já há uma hipótese empírica: o número 230.658 do artigo coincide exatamente com **destinatários distintos** do nosso dump de 2020; a união de sender+recipient é 377.296. Isto **não** resolve a divergência 63 vs 9. Enviar pedido de esclarecimento aos autores (realizado pelo pesquisador em 17/11/2026); aguardar eventual retorno, sem interromper a investigação. Só depois declarar a reprodução completa ou prosseguir a testes confirmatórios temporais.

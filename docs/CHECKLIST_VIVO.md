@@ -76,7 +76,9 @@
 - [x] **Executar etapa 9 no Colab**: seis requisições ao Blockscout retornaram HTTP 200, com três contratos identificados (AdminUpgradeabilityProxy, token ERC-20 SmartEther e DSProxy). [Relatório e evidências](experiments/EXP-01D-triagem-onchain-3.md)
 - [x] Preparar etapa 10 no **mesmo notebook 01** para conferir, a partir de `data/interim/test_20201029.parquet`, transações de três endereços, contagens e quatro features versus dataset processado (gráfico e relatório; sintaxe validada, **execução Colab pendente**).
 - [x] **Executar etapa 10 no Colab (17/11/2026)**, conferir 4 artefatos no Drive: 3 endereços, 12/12 features e n_tx em paridade numérica exata com dataset processado; 53/10/10 tx, 27/10/1 remetentes distintos. [Relatório EXP-01E](experiments/EXP-01E-auditoria-historica-features.md).
-- [ ] Auditar eventos de upgrade e identidade histórica do proxy (a implementação inicial e a atual diferem, mas data da mudança não verificada).
+- [x] Preparar etapa 11 do notebook 01: coleta externa pelo Blockscout com paginação, eventos `Upgraded`, transações de 29/10/2020 e **indicador explícito de cobertura**. Código validado sintaticamente e versionado, mas ainda sem execução Colab.
+- [ ] Executar etapa 11 no Colab e conferir os 4 artefatos gerados, inclusive status de paginação.
+- [ ] Auditar eventos de upgrade e identidade histórica do proxy (implementações inicial/atual diferem; data de mudança não verificada). **Se não alcançar 2020, registrar resultado como inconclusivo.**
 - [ ] Conferir atividade do contrato em 29/10/2020 **também diretamente na blockchain**; a paridade interim→processed concluída é apenas verificação interna, não fonte independente.
 
 ## Evidências principais

@@ -32,3 +32,8 @@ Consulte [[01_CRONOLOGIA]], [[02_EXPERIMENTOS]], [[03_DECISOES]], [[04_DADOS]] e
 
 
 **Atualização de armazenamento (17/11/2026):** Drive próprio oficial: [Projeto_Mixers_Ethereum](https://drive.google.com/drive/folders/1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj). A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; o atalho foi removido do Meu Drive. Conferência integral da cópia por hash continua pendente.
+
+
+## Checklist obrigatório para todas as sessões
+
+Consulte e atualize o [CHECKLIST_VIVO.md](CHECKLIST_VIVO.md) antes de iniciar novo experimento. Para cada etapa informar objetivo, evidências, conclusão permitida e próximo passo. A reprodução do artigo ainda tem divergência quantitativa **63 alertas dos autores versus 9 alertas nossos** em 29/10/2020; **3/3 pools de referência recuperados** nas duas análises.

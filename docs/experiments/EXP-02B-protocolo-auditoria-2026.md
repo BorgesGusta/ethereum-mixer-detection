@@ -1,6 +1,6 @@
 # EXP-02B — Protocolo de validação de rótulos negativos em 15/01/2026
 
-**Criado em:** 17/11/2026. **Estado:** protocolo de auditoria **planejado, não executado**. Não altera limiar, modelo, amostras ou rótulos de `features_2026-01-15.parquet`.
+**Criado em:** 17/11/2026. **Estado atualizado:** **execução amostral concluída no Colab em 17/11/2026**, com 18/18 hashes e contagens 315/315 conferidos; logs do MCT-XEN incompletos e rótulos ainda indeterminados. [Resultados EXP-02B](EXP-02B-resultados-auditoria-amostral-2026.md). Não altera limiar, modelo, amostras ou rótulos de `features_2026-01-15.parquet`.
 
 ## Universo e finalidade
 
@@ -51,3 +51,8 @@ Primeiro, coletar uma amostra com hashes e funções de **15/01/2026** em fonte 
 - **Limite:** verificar 3/119 transações, por exemplo, não significa auditar todas as 119. Não conceder rótulo negativo independente nem calcular nova precisão geral nesta etapa.
 
 **Próxima ação:** executar as quatro etapas no Colab; conferir CSVs e manifesto, identificar erros reais, selecionar endereços para coleta histórica completa e revisão de rótulos por dois avaliadores.
+
+
+## Adendo pós-execução — 17/11/2026
+
+A seção de preparação acima registra historicamente o estado **anterior à execução**. O notebook foi executado no Colab e salvou seis arquivos em [pasta própria do Drive](https://drive.google.com/drive/folders/1rV5mJ0rkINLML5aFUFnl0s7g1ybwrwOb). Todos os seis contratos tiveram contagens iguais ao ranking (total **315 transações diretas no dia**). As **18/18 transações amostradas** coincidem entre API Blockscout e arquivo intermediário quanto a hash, remetente, destinatário e data. **15/18 páginas de logs estão completas**; as outras três, todas MCT-XEN, trouxeram 50 logs cada e continuação da paginação. Todas as seis identidades seguem com `rotulo_cientifico=indeterminado`; nenhum código de proxy foi validado no bloco de janeiro/2026. [Resultados detalhados](EXP-02B-resultados-auditoria-amostral-2026.md).

@@ -20,7 +20,7 @@ Pesquisa acadêmica em Segurança de Redes de Computadores: reprodução e inves
 | Sistema | Responsabilidade |
 |---|---|
 | **Este GitHub** | Versões de scripts e notebooks, protocolos, decisões, notas, figuras e resultados leves |
-| **[Google Drive — mixers-ethereum](https://drive.google.com/drive/folders/1VgyDm4okxLmt7GXf0diT560SAjYfgM9b)** | Dados brutos, intermediários, processados, modelos binários, execuções completas e backups históricos |
+| **[Google Drive — mixers-ethereum](https://drive.google.com/drive/folders/1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj)** | Dados brutos, intermediários, processados, modelos binários, execuções completas e backups históricos |
 | **Obsidian** | Abrir um clone deste repositório como cofre de notas Markdown; não criar outra fonte de verdade |
 | **Overleaf** | Manuscrito em LaTeX, tabelas e referências sincronizadas de forma controlada, futuramente |
 
@@ -35,3 +35,6 @@ Pesquisa acadêmica em Segurança de Redes de Computadores: reprodução e inves
 7. Não publicar dados pesados, credenciais, tokens, arquivos pessoais ou resultados não auditados no GitHub.
 
 **Próximo marco:** catalogar notebooks e resultados históricos, reconciliar decisões contraditórias e planejar coleta longitudinal 2020–2026. Nenhum resultado anterior foi recalculado por esta documentação.
+
+
+**Drive oficial:** [Projeto_Mixers_Ethereum (pasta própria)](https://drive.google.com/drive/folders/1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj). A pasta `mixers-ethereum` do Bruno é apenas fonte histórica compartilhada; não fazer novas execuções nela.

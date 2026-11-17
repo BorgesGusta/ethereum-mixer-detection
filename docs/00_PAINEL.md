@@ -1,6 +1,6 @@
 # Painel da pesquisa
 
-**Estado:** migração da pesquisa para um histórico versionado. Fonte dos dados pesados: [Drive](https://drive.google.com/drive/folders/1VgyDm4okxLmt7GXf0diT560SAjYfgM9b).
+**Estado:** migração da pesquisa para um histórico versionado. Fonte dos dados pesados: [Drive](https://drive.google.com/drive/folders/1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj).
 
 ## Questões científicas
 
@@ -29,3 +29,6 @@
 - [ ] Preparar estrutura LaTeX e bibliografia do artigo
 
 Consulte [[01_CRONOLOGIA]], [[02_EXPERIMENTOS]], [[03_DECISOES]], [[04_DADOS]] e [[05_PLANO]].
+
+
+**Atualização de armazenamento (17/11/2026):** Drive próprio oficial: [Projeto_Mixers_Ethereum](https://drive.google.com/drive/folders/1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj). A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; o atalho foi removido do Meu Drive. Conferência integral da cópia por hash continua pendente.

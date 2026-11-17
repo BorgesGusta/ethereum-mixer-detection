@@ -1,0 +1,179 @@
+\documentclass[11pt,a4paper]{article}
+% Manuscrito editável, versão 0.1, 17/11/2026.
+% Estrutura provisória: após escolher o congresso, aplicar seu template oficial.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,brazil]{babel}
+\usepackage{lmodern}
+\usepackage{geometry}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\usepackage{microtype,booktabs,tabularx,array,graphicx}
+\usepackage{amsmath}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\title{Auditoria Reprodutível da Detecção de Mixers na Ethereum:\\Sensibilidade Metodológica e Evidências Funcionais}
+% PREENCHER autoria; conferir exigência de anonimato antes de submeter.
+\author{Autor(a) 1\\Instituição a definir \and Autor(a) 2\\Instituição a definir}
+\date{Rascunho científico v0.1 — 17 de novembro de 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A identificação de contratos inteligentes que oferecem mistura de ativos na Ethereum é relevante para a análise forense, embora padrões transacionais semelhantes também ocorram em serviços descentralizados distintos. Este estudo investiga a reprodutibilidade e os limites de um classificador Random Forest de quatro características para identificação de possíveis mixers. A reprodução em 1.114.702 transações de 29/10/2020 recuperou os três pools Tornado Cash de referência, mas sinalizou nove endereços no limiar de 0,50, frente aos 63 do estudo original. Uma análise controlada demonstrou que a alteração do filtro de elegibilidade de uma para vinte transações, mantendo o mesmo modelo e limiar, reduziu os alertas de 49 para sete. Na auditoria funcional de uma avaliação temporal legada referente a 15/01/2026, 18 de 18 transações amostradas foram verificadas externamente por hash, remetente, destinatário e data; a paginação de seus eventos foi completada. As evidências incluem chamadas associadas a bridges, roteadores entre redes e operações em lote. Os resultados demonstram sensibilidade à escolha da população avaliada e a importância de contextualizar alertas com registros funcionais e controles de cobertura. A divergência com o estudo original não possui causa comprovada, e a ausência de rótulos independentes impede afirmar precisão geral ou superioridade preditiva.
+\end{abstract}
+\noindent\textbf{Palavras-chave:} Ethereum; mixers; análise forense; aprendizado de máquina; reprodutibilidade; contratos inteligentes.
+
+\begin{otherlanguage}{english}
+\begin{abstract}
+Detecting Ethereum smart contracts offering mixing services is relevant to blockchain forensics, yet similar transaction patterns also arise in decentralized services with different purposes. This study examines the reproducibility and limitations of a four-feature Random Forest mixer detector. In a reproduction involving 1,114,702 transactions from October 29, 2020, all three reference Tornado Cash pools were recovered, but nine addresses were flagged at the 0.50 threshold compared with 63 in the original study. Holding the model and threshold fixed, changing the minimum eligible transaction count from one to twenty reduced the number of alerts from 49 to seven. In a functional audit of a previously executed January 15, 2026 evaluation, an external source confirmed transaction hash, sender, recipient, and date for 18 out of 18 sampled transactions; their log pagination was subsequently completed. Observed functionality included bridges, cross-chain routers, and batch operations. These findings highlight the sensitivity of alerts to population-selection rules and the need for execution context and explicit coverage checks. The original alert-count discrepancy remains unexplained, and missing independent labels prevent claims of overall precision or predictive superiority.
+\end{abstract}
+\end{otherlanguage}
+
+\section{Introdução}
+Blockchains públicas permitem auditoria de transações e, simultaneamente, suscitam desafios de privacidade e rastreabilidade. Na Ethereum, mixers podem dissociar depósitos de retiradas mediante mecanismos criptográficos. Entretanto, serviços como exchanges descentralizadas (DEXs), bridges, roteadores e operações em lote também produzem interações complexas e múltiplas chamadas internas. Portanto, sem informação funcional, sinais estatísticos associados a mixers podem produzir alertas ambíguos.
+
+Leale e Sendin \citep{leale2025mixers} propuseram um modelo Random Forest \citep{breiman2001random} com quatro características transacionais. No teste principal, realizado em 29/10/2020, relataram 63 endereços classificados como possíveis mixers, incluindo três pools Tornado Cash. Este trabalho busca distinguir a recuperação desses contratos conhecidos da reprodução exata dos resultados e qualificar, mediante evidências externas, a natureza dos contratos sinalizados.
+
+As questões de pesquisa são:
+\begin{itemize}
+ \item \textbf{RQ1:} como escolhas de elegibilidade e balanceamento afetam a contagem de alertas?
+ \item \textbf{RQ2:} que evidências funcionais podem ser obtidas dos contratos sinalizados e com qual cobertura histórica?
+ \item \textbf{RQ3 (hipótese futura):} atributos contextuais aumentariam a capacidade de distinguir mixers de outros contratos em avaliações independentes?
+\end{itemize}
+
+As contribuições já demonstradas são a reprodução parcial do procedimento, a quantificação do impacto do filtro de elegibilidade, a conferência cruzada de transações e a auditoria de funções e eventos com registros de incerteza. A contribuição de melhoria de desempenho \emph{ainda não foi testada}.
+
+\section{Fundamentação e trabalhos relacionados}
+\subsection{Mixers, privacidade e classificação de contratos}
+Mixers procuram dificultar a correlação de depósitos e retiradas de ativos. A existência desse serviço não implica ilicitude de suas operações. Este estudo classifica \emph{contratos e serviços}, e não atribui responsabilidade criminal a usuários.
+
+\subsection{Características estatísticas e contexto de execução}
+O classificador do artigo de referência utiliza \texttt{value\_entropy}, \texttt{fee\_entropy}, \texttt{internal\_value\_entropy} e \texttt{call\_count\_mean}. Esses atributos sumarizam padrões de valores, taxas e chamadas, mas não codificam a finalidade econômica do contrato. Eventos, seletores, ABIs, implementações de proxies e status de cobertura fornecem pistas complementares que requerem contextualização histórica.
+
+\subsection{Delimitação da literatura}
+A literatura sobre Ethereum trata de tarefas distintas: identificação de contratos mixers, classificação de carteiras, correlação depósito--saque e rastreamento de lavagem de ativos. Seus F1 e demais métricas não são diretamente comparáveis sem correspondência de unidade experimental, rótulos e período. A taxonomia proposta no estudo registrado por \citep{barbereau2023taxonomy} orienta a caracterização funcional. Outros trabalhos revisados, incluindo estudos de aprendizado em grafos, MixGuard, FPTracer e StealthLink, fundamentam extensões futuras, mas não compõem baselines equivalentes nesta versão. \textbf{Pendente: completar metadados editoriais e bibliografia dessas fontes após conferir os PDFs.}
+
+\section{Materiais e métodos}
+\subsection{Dados e unidade experimental}
+A reprodução utiliza janelas de transações recebidas por destinatário em um dia UTC. O treino contém 123 janelas: 23 positivas do mesmo contrato Tornado Cash 10 ETH, distribuídas por 23 dias de março/2025, e 100 negativas relativas a 100 endereços em um único dia de março/2025. A identidade dessas amostras com aquelas usadas pelos autores não foi demonstrada.
+
+O teste de 29/10/2020 compreende 1.114.702 transações e 230.658 destinatários. Aplicando-se \texttt{n\_tx>=10}, 4.038 endereços ficam elegíveis. A avaliação de 15/01/2026 foi executada previamente com limiar de 0,85 definido a partir de validação sobre dados de 2020; não é um novo teste cego após a exploração de seus resultados.
+
+\subsection{Classificador de referência e sensibilidade}
+O Random Forest usa 100 árvores, profundidade máxima de cinco níveis, reamostragem de classes, pesos automáticos e limiar \texttt{score>0,50} no cenário de reprodução de 2020. As quatro características são derivadas de transferências, taxas, valores internos e contagem de chamadas. Parte das regras de arredondamento e agregação do nosso pipeline não está especificada com granularidade equivalente no artigo-base.
+
+Para avaliar sensibilidade, mantiveram-se fixos modelo e limiar, alterando apenas o mínimo de transações por endereço para 1, 5, 10 e 20. Outros cenários variaram sementes e políticas de balanceamento, com \texttt{n\_tx>=10}. Não houve seleção de limiar para reproduzir artificialmente os 63 alertas.
+
+\subsection{Auditoria cruzada e funcional}
+Na auditoria de 2020, foram confrontados 20 hashes de transações referentes a SmartEther e DSProxy entre o dump Blockchair \citep{blockchair} e o Blockscout \citep{blockscout}, incluindo remetentes, destinatários e blocos.
+
+Para janeiro/2026, seis endereços fora dos três pools de referência foram identificados documentalmente como serviços de outras categorias. De cada um foram selecionadas deterministicamente a primeira, a transação central e a última no dia, totalizando 18 amostras para consulta externa. O EXP-02C completou as páginas de logs inicialmente incompletas nas três transações MCT-XEN, preservando páginas originais e checando as primeiras páginas contra a coleta anterior.
+
+\subsection{Proposta futura de comparação contextual}
+Uma avaliação de melhoria por informação funcional depende de positivos de protocolos mixers diferentes, negativos difíceis com finalidade histórica auditada, amostras de não alertas, revisão independente de rótulos e separação entre contratos e períodos. Tal ensaio \emph{não integra os resultados apresentados}.
+
+\section{Resultados}
+\subsection{Reprodução parcial em outubro de 2020}
+\begin{table}[htbp]
+\centering
+\small
+\caption{Comparação do estudo-base com a reprodução.}
+\label{tab:reproducao}
+\begin{tabular}{p{0.60\linewidth}rr}
+\toprule
+Indicador & Artigo-base & Reprodução\\
+\midrule
+Transações do dia & 1.114.702 & 1.114.702\\
+Endereços reportados / destinatários & 230.658 & 230.658\\
+Transações para três pools de referência & 239 & 239\\
+Pools Tornado Cash recuperados & 3 & 3\\
+Endereços sinalizados & \textbf{63} & \textbf{9}\\
+Elegíveis com no mínimo dez transações & --- & 4.038\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+O algoritmo reproduzido recuperou os três pools conhecidos, mas não a quantidade de alertas do artigo-base. Diferenças plausíveis de seleção de treino, agregação, discretização e elegibilidade não puderam ser atribuídas causalmente. Por isso, o resultado deve ser relatado como reprodução parcial.
+
+\subsection{Análise controlada da elegibilidade}
+\begin{table}[htbp]
+\centering
+\caption{Alertas com limiar fixo de 0,50.}
+\label{tab:limiar}
+\begin{tabular}{rrrr}
+\toprule
+Mín. transações & Elegíveis & Alertas & Pools conhecidos\\
+\midrule
+1 & 230.658 & 49 & 3/3\\
+5 & 7.865 & 14 & 3/3\\
+10 & 4.038 & 9 & 3/3\\
+20 & 2.464 & 7 & 3/3\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\input{figuras/sensibilidade.tex}
+
+O filtro de dez transações removeu 40 dos 49 alertas obtidos ao incluir endereços com ao menos uma transação. Nos cenários controlados com o filtro de dez transações, mudanças de semente e balanceamento mantiveram o mesmo conjunto dos nove alertas, exceto apenas pesos de classe, com dez. Esses resultados quantificam a sensibilidade \emph{na nossa implementação} e não explicam os 63 alertas do artigo.
+
+\subsection{Auditoria externa em 2020}
+Todos os 20 hashes auditados dos contratos SmartEther e DSProxy coincidiram entre Blockchair e Blockscout, incluindo remetente, destinatário e bloco. Já a implementação histórica de um proxy investigado em outubro/2020 permaneceu indeterminada devido à falta de resposta válida de estado histórico. As correspondências são limitadas a esse subconjunto de 20 transações.
+
+\subsection{Avaliação temporal legada e evidências funcionais em 2026}
+O teste legado de 15/01/2026 sinalizou nove endereços entre 20.214 elegíveis, com limiar 0,85, incluindo os três pools Tornado Cash de referência.
+
+\begin{table}[htbp]
+\centering
+\small
+\caption{Seis contratos adicionais sinalizados em 2026.}
+\label{tab:contratos}
+\begin{tabular}{p{0.39\linewidth}rp{0.35\linewidth}}
+\toprule
+Associação documental & Tx diretas no dia & Método na amostra\\
+\midrule
+OKX DEX / proxy & 83 & seletor 0xec5b999d (indeterminado)\\
+ApeCoin OFT Adapter & 16 & \texttt{send}\\
+SwappableBridgeUniswapV3 & 66 & \texttt{swapAndBridge}\\
+Chainlink CCIP Router & 119 & \texttt{ccipSend}\\
+MCT-XEN Batch Minter & 15 & \texttt{batchClaimRank}; seletor 0x98190f47\\
+Wormhole Relayer & 16 & \texttt{deliver}\\
+\midrule
+Total & \textbf{315} & 18 transações amostradas\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+As contagens do intermediário coincidiram com o ranking legado. Nas 18 transações amostradas, hash, remetente, destinatário e data foram confirmados na API Blockscout. A coleta inicial tinha paginação completa em 15 das 18 transações; o EXP-02C completou as três pendentes do MCT-XEN, recuperando 83, 83 e 300 logs, respectivamente, num total de 466 logs nesses três hashes. Somados aos 120 logs já completos das outras amostras, obtiveram-se 586 logs nas 18 transações auditadas. Os seletores 0xec5b999d e 0x98190f47 não tiveram correspondência confirmada na ABI atual nem na base 4byte consultada.
+
+\textbf{Limite fundamental:} 315 transações diretas no intermediário não significam 315 hashes auditados externamente; os seis contratos adicionais não receberam rótulos negativos independentes. Não é possível, a partir desta amostra, calcular precisão geral, recall ou F1 populacionais.
+
+\section{Discussão}
+Os resultados demonstram que o critério de elegibilidade modifica significativamente a contagem de endereços sinalizados pelo classificador estatístico. A investigação das funções observadas em 2026 também oferece evidências iniciais de que padrões transacionais complexos de bridges, DEXs, roteadores e serviços de lote podem aparecer entre os alertas. Contudo, observar \texttt{ccipSend}, \texttt{swapAndBridge} ou outros métodos em uma amostra não prova ausência de operações de mixer em toda a história do contrato.
+
+A distinção entre identificação de transação, completude de eventos, compatibilidade de função e rótulo científico é essencial. O uso de um classificador, neste contexto, deve priorizar investigação e triagem, não conclusões automáticas sobre ilegalidade.
+
+\section{Ameaças à validade}
+\begin{enumerate}
+\item \textbf{Ground truth:} ausência de negativos auditados independentemente para os seis contratos adicionais de 2026 e de múltiplos protocolos positivos no treino.
+\item \textbf{Viés de verificação:} a amostra externa priorizou endereços já alertados, e não uma amostra representativa do universo.
+\item \textbf{Dependência entre grupos:} as 23 janelas positivas pertencem ao mesmo contrato; a validação cruzada por linha não prova generalização para contratos inéditos.
+\item \textbf{Cobertura e histórico:} transações diretas não equivalem a todas as chamadas internas; ABIs atuais não garantem implementação histórica dos proxies.
+\item \textbf{Reprodução estrita:} amostras de treinamento, detalhes de engenharia e lista dos 63 alertas do estudo-base não estão disponíveis de modo equivalente.
+\item \textbf{Temporalidade:} avaliação retrospectiva em 2020 e teste de 2026 já explorado não equivalem a uma nova avaliação temporal cega.
+\end{enumerate}
+Um pedido de esclarecimento foi encaminhado aos autores em 17/11/2026. Somente se a ausência de resposta persistir no fechamento do manuscrito esse fato será relatado como limitação de acesso a detalhes metodológicos, não como evidência de erro dos autores.
+
+\section{Conclusão}
+A reprodução recuperou os três pools de referência do estudo-base, mas não a mesma quantidade de alertas. Comprovou-se a sensibilidade das previsões ao universo elegível e a utilidade de uma auditoria que registre proveniência, identidade transacional, eventos e lacunas históricas. Os dados não comprovam superioridade de acurácia, robustez adversarial ou generalização a mixers inéditos. Uma extensão contextual requer corpus com rótulos independentes, cobertura funcional e avaliação por contrato e período sem vazamento.
+
+\section*{Disponibilidade dos artefatos}
+Código, protocolos, planilhas de resultados, manifestos e materiais didáticos: \url{https://github.com/BorgesGusta/ethereum-mixer-detection}. Dados de terceiros e direitos de redistribuição devem ser avaliados antes de disponibilização pública.
+
+% Bibliografia provisória: conferir metadados, DOI, autoria e regras do evento.
+\bibliographystyle{plainnat}
+\bibliography{referencias}
+\end{document}

@@ -36,7 +36,7 @@ Etapa 13 anexada ao **mesmo notebook canônico 01**:
 
 1. Fixar 4.038 candidatos (`n_tx>=10`) e limiar **0,50**. Comparar 4 políticas de balanceamento com seed 42: (a) oversampling + pesos balanceados (base), (b) somente pesos, (c) somente oversampling, (d) nenhum. Guardar número de alertas, pools conhecidos, sobreposição dos alertas e coincidência exata dos scores.
 2. Fixar política base e variar somente `random_state` (42, 7, 123), mantendo todas as demais escolhas.
-3. Fixar **o mesmo modelo-base** e variar só `n_tx` no conjunto de teste (5, 10, 20), mostrando mudança do universo elegível e quantos pools são recuperados.
+3. Fixar **o mesmo modelo-base** e variar só `n_tx` no conjunto de teste (1, 5, 10, 20), mostrando mudança do universo elegível e quantos pools são recuperados. Também contabilizar separadamente as janelas com features não finitas, evitando excluí-las silenciosamente. A variante com `n_tx=1` testa a hipótese de classificação de todos os destinatários, enquanto o artigo explicita `>=10` apenas para seleção dos negativos.
 4. Registrar diversidade dos contratos/dias do treino. A análise usa o conjunto **existente**, sem alterar seleção dos 100 negativos nem Router. Não atribuir causa da diferença 63 × 9 a um fator sem evidência empírica.
 
 **Saídas previstas após execução no Colab:** `composicao_treino.csv`, `comparacao_cenarios.csv`, `comparacao_elegibilidade.csv`, `alertas_cenarios.csv`, `grafico_sensibilidade.png` e `manifesto.json` em pasta exclusiva no Drive.

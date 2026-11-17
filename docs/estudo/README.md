@@ -77,3 +77,12 @@ Novo capítulo para o NotebookLM: [Aula 05 em Markdown](aula-05-auditoria-funcio
 - [Relatório da execução EXP-02B](../experiments/EXP-02B-resultados-auditoria-amostral-2026.md) e [pasta com CSVs e manifesto](https://drive.google.com/drive/folders/1rV5mJ0rkINLML5aFUFnl0s7g1ybwrwOb).
 
 Conceitos centrais: contagem de universo, validação independente por amostra, paginação de logs, proxies atualizáveis, status indeterminado de rótulos e viés de verificação. **315 transações no intermediário não são 315 hashes auditados externamente**.
+
+## Aula 07 — Paginação, seletores e rótulos (17/11/2026)
+
+- [PDF Aula 07 no Drive / NotebookLM](https://drive.google.com/file/d/1NhDozc2qICsQqhlLNYyTIj2U26kxrELX/view)
+- [Texto didático versionado](aula-07-paginacao-seletores-rotulos.md)
+- [Notebook EXP-02C no Colab](https://drive.google.com/file/d/1ZP68tB80XqhYIkyhWP6GOwpe3BDrquPU/view)
+- [Protocolo EXP-02C](../experiments/EXP-02C-protocolo-paginacao-e-seletores.md)
+
+Lição central: **páginas completas de log não significam contratos rotulados**, e a **ABI atual de um proxy não comprova sua implementação histórica**. A execução real do EXP-02C permanece pendente.

@@ -1,0 +1,20 @@
+# dados e modelos pesados (permanecem no Drive)
+data/raw/
+data/interim/
+data/processed/
+*.parquet
+*.tsv.gz
+*.joblib
+*.pkl
+*.zip
+*.bin
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+.DS_Store
+# documentos e saídas transitórias
+.cache/
+tmp/

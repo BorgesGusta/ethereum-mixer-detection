@@ -71,7 +71,9 @@
 - [x] Produzir [relatório com limites dos rótulos](experiments/EXP-01C-triagem-9-alertas.md).
 - [x] Confirmar 4 contratos Tornado conhecidos na referência expandida (3 no artigo + pool 100 ETH).
 - [x] Encontrar fontes documentais para outros dois alertas: ForTube BANK e zkSync; **não tratá-los ainda como negativos verificados**.
-- [ ] Investigar três IDs sem identificação corroborada: 0x5e60…, 0x98f1…, 0xe113….
+- [x] Pesquisar os três endereços nas fontes públicas indexadas; **nenhum nome foi confirmado**, e acesso direto a exploradores não estava disponível nesta sessão. Manter o status *não identificado*, não inferir EOA/mixer.
+- [x] Preparar etapa 9 no mesmo notebook 01: consulta aos endpoints públicos do Blockscout, preservando respostas e erros para auditoria, com salvamento opcional no Drive. Notebook validado sintaticamente, **a consulta NÃO foi executada no Colab ainda**.
+- [ ] Executar etapa 9 no Colab e verificar respostas/endereço/código dos três IDs (0x5e60…, 0x98f1…, 0xe113…).
 
 ## Evidências principais
 

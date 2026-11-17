@@ -1,0 +1,10 @@
+recipient,prob_mixer,n_tx,rotulo_dataset,identificacao_externa,status_evidencia,fonte
+0x5e60fcca904753a31f9df7d7f6b7856b6ec27aa9,1.00,53,,nao_identificado,pendente,
+0x98f1858c9740b9c5f2cd8abea67948873d38dc39,0.98,10,,nao_identificado,pendente,
+0xde7b3b2fe0e7b4925107615a5b199a4eb40d9ca9,0.91,52,,ForTube BANK,identificacao_documental_nao_rotulo_verificado,https://github.com/thefortube/fortube
+0x12d66f87a04a9e220743712ce6d9bb1b5616b8fc,0.87,73,0.1ETH,Tornado Cash 0.1 ETH,referencia_artigo_e_auditoria,https://drive.google.com/file/d/1Vuo98PnMKRoL1t4j9MHmkQz4s8bGfbfS/view
+0x47ce0c6ed5b0ce3d3a51fdb1c52dc66a7c3c2936,0.87,55,1ETH,Tornado Cash 1 ETH,referencia_artigo_e_auditoria,https://drive.google.com/file/d/1Vuo98PnMKRoL1t4j9MHmkQz4s8bGfbfS/view
+0xa160cdab225685da1d56aa342ad8841c3b53f291,0.87,29,,Tornado Cash 100 ETH,referencia_auditoria_expandida_nao_artigo,https://drive.google.com/file/d/1Vuo98PnMKRoL1t4j9MHmkQz4s8bGfbfS/view
+0x910cbd523d972eb0a6f4cae4618ad62622b39dbf,0.86,111,10ETH,Tornado Cash 10 ETH,referencia_artigo_e_auditoria,https://drive.google.com/file/d/1Vuo98PnMKRoL1t4j9MHmkQz4s8bGfbfS/view
+0xe113d58a4cb4dbac8a0da608ed7232785c1f2c18,0.76,10,,nao_identificado,pendente,
+0xabea9132b05a70803a4e85094fd0e1800777fbef,0.59,25,,zkSync bridge contract,identificacao_documental_nao_rotulo_verificado,https://www.blockchainresearchlab.org/wp-content/uploads/2020/05/BRL-Working-Paper-29-Transaction-Fees-and-Economic-Activity.pdf

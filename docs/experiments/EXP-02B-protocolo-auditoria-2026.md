@@ -38,3 +38,16 @@ Os nomes acima são **pistas para auditoria**, não afirmações de que todas as
 ## Próxima execução
 
 Primeiro, coletar uma amostra com hashes e funções de **15/01/2026** em fonte com cobertura de data garantida; priorizar os seis alvos acima. Não aumentar limites de paginação sem controle, não exigir novos tokens desnecessários, nem alterar o modelo por causa das evidências obtidas.
+
+## Implementação técnica preparada em 17/11/2026 (não executada em dados reais)
+
+- [Notebook EXP-02B de auditoria funcional](../../notebooks/13_EXP-02B_auditoria_funcional_2026.ipynb) — cópia [no Drive, para abrir no Colab](https://drive.google.com/file/d/1hKW2YgMYi86u2YKUs-l-4NOvTHmMN9La/view).
+- [Script Python de auditoria](../../scripts/exp02b_auditoria_2026.py) — amostra determinística de até três hashes por endereço, metadados atuais e detalhes da transação/log na API v2 Blockscout.
+- [Aula 05 e exercícios](../estudo/aula-05-auditoria-funcional-2026.md) — cópia [PDF no NotebookLM](https://drive.google.com/file/d/1RDNhyOZSxTmZvFytyFlFitlgLH7CtL_p/view).
+- O notebook baixa pelo ID no Drive **somente** o `data/interim/dia_20260115.parquet` (arquivo histórico intermediário de ~369 MB) e `sinalizados_teste_2026.csv`, selecionando os seis destinatários no dia de teste.
+- Extrai contagens locais por endereço, salva **todas as linhas locais dos seis**, e consulta **até 3 transações de cada um** com verificações de hash, destinatário, remetente e dia. `/transactions/{hash}/logs` é consultado na primeira página; paginação incompleta fica registrada, sem inferência por ausência.
+- Cria pasta exclusiva em `results/` para `transacoes_locais_6_20260115.csv`, `resumo_6.csv`, `amostras_tx_api.csv`, `eventos_amostras.csv`, `metadados_atuais.csv` e `manifesto.json`, com SHA-256 das entradas e saídas.
+- **Testes realizados nesta preparação:** sintaxe dos quatro blocos executáveis do notebook validada, e pipeline com seis endereços verificado por respostas simuladas da API. **A coleta on-chain e o processamento real do parquet ainda NÃO foram executados.**
+- **Limite:** verificar 3/119 transações, por exemplo, não significa auditar todas as 119. Não conceder rótulo negativo independente nem calcular nova precisão geral nesta etapa.
+
+**Próxima ação:** executar as quatro etapas no Colab; conferir CSVs e manifesto, identificar erros reais, selecionar endereços para coleta histórica completa e revisão de rótulos por dois avaliadores.

@@ -24,3 +24,8 @@ Os testes `tests/test_reproducao.py` estão escritos, mas ainda precisam ser exe
 - [99_LEGADO — notebooks históricos](https://drive.google.com/drive/folders/16NLfr-bvZwbgdJN6p-wCPMRrvIpJEmZ0): 14 notebooks originais movidos, preservando seus IDs, mais as cópias históricas 12.02A e 12.02B.
 - A cópia operacional no Drive foi **recriada a partir da mesma lógica**, mas não é ainda um espelho byte a byte do notebook GitHub. A **versão canônica do código continua no GitHub**; até automatizarmos a sincronização, conferir diferenças antes de publicar conclusões científicas.
 - Nenhuma pasta de datasets ou resultados foi movida.
+
+
+### Correção do Drive oficial (17/11/2026)
+
+A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; não é o caminho canônico. A cópia de execução está em [Notebooks ativos no Drive próprio](https://drive.google.com/drive/folders/1VNdVfqmHt-csEcbh9M9SLaV_IgvpGwJ4), arquivo [01_reproducao.ipynb](https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view). A versão GitHub usa o caminho `MyDrive/Segurança de Redes de Computadores/Projeto_Mixers_Ethereum`; é necessária execução de paridade antes de considerar o pipeline validado.

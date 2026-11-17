@@ -51,7 +51,10 @@
 - [ ] Harmonizar traces/Router, cobertura e datas em 2020–2026
 - [ ] Treinar e testar com separação por tempo e contrato, evitando vazamento
 - [ ] Executar comparação justa de RF, Extra Trees e modelos adicionais
-- [ ] Redigir manuscrito no Overleaf com tabelas/figuras rastreáveis
+- [x] **Iniciar manuscrito editável em LaTeX para Overleaf**, com introdução, método, resumo PT/EN, tabelas, referências BibTeX e gráfico PGFPlots: [main.tex](../artigo/overleaf/main.tex), [referencias.bib](../artigo/overleaf/referencias.bib), [figura editável](../artigo/overleaf/figuras/sensibilidade.tex).
+- [x] Produzir [roteiro inicial de apresentação científica](apresentacao/roteiro-cientifico-v0.md) e [plano de fechamento](manuscrito/plano-de-fechamento-e-apresentacao.md).
+- [ ] Validar LaTeX compilado no Overleaf, conferir bibliografia e adaptar ao template da chamada oficial.
+- [ ] Revisar manuscrito com orientador/coautores e finalizar slides a partir do texto congelado.
 
 ## Por que essa reprodução ainda não é exata?
 
@@ -105,8 +108,8 @@
 - [x] **Preparar o notebook EXP-02B** dedicado à auditoria amostral de até 3 hashes por contrato dos 6 alertas 2026, com comparação ao intermediário, API Blockscout, funções, logs e manifesto. Sintaxe e testes locais simulados concluídos; [notebook](../notebooks/13_EXP-02B_auditoria_funcional_2026.ipynb), [script](../scripts/exp02b_auditoria_2026.py) e [Aula 05](estudo/aula-05-auditoria-funcional-2026.md).
 - [x] **Executar EXP-02B no Colab e conferir seis arquivos reais em 17/11/2026**: 6/6 contagens conciliadas (315 transações), 18/18 hashes/remetentes/destinatários/dias confirmados na API Blockscout; 15/18 páginas de logs completas, faltam 3 páginas em MCT-XEN. [Relatório EXP-02B](experiments/EXP-02B-resultados-auditoria-amostral-2026.md).
 - [x] **Preparar EXP-02C** para completar logs das três transações MCT-XEN via `next_page_params` (limite 30 páginas / 4.000 logs por hash), conferir novamente a página 1 do EXP-02B e consultar `0xec5b999d` e `0x98190f47` por ABI atual e 4byte. Notebook e script versionados; sintaxe e paginação simulada validadas. [Protocolo](experiments/EXP-02C-protocolo-paginacao-e-seletores.md) · [Colab no Drive](https://drive.google.com/file/d/1ZP68tB80XqhYIkyhWP6GOwpe3BDrquPU/view).
-- [ ] **Executar EXP-02C em Colab e conferir arquivos gerados**; não afirmar completude dos logs até `next_page_params=null` para as três transações.
-- [ ] Completar a **paginação dos logs das três transações MCT-XEN** (50 registros na página 1 de cada, `next_page_params` presente) e registrar cobertura final.
+- [x] **Executar EXP-02C e conferir 6 artefatos no Drive (17/11/2026):** três hashes MCT-XEN paginados integralmente (2/2/6 páginas, 83/83/300 logs, total 466) e primeiras páginas iguais ao EXP-02B; dois seletores continuam sem correspondência em ABI atual/4byte e proxies sem prova histórica. [EXP-02C — Resultados](experiments/EXP-02C-resultados-logs-e-seletores.md).
+- [x] **Completar paginação de 3 amostras MCT-XEN**: 466 logs (316 adicionais aos 150 da coleta anterior). As 18 amostras do EXP-02B/02C têm paginação encerrada; **não são todas as 315 transações**.
 - [ ] Decodificar `0xec5b999d` (proxy OKX) e `0x98190f47` (MCT-XEN), com ABI/código do período; verificar implementação histórica dos proxies OKX, MCT-XEN e Wormhole.
 - [ ] Auditar atividade exata dos seis candidatos em 15/01/2026, incluindo implementação histórica de proxies, e revisão independente de rótulos negativos.
 - [ ] Obter positivos de **outros protocolos de mixers** e período verdadeiramente novo para holdout por protocolo, evitando reaproveitar 2026 como teste confirmatório novo.
@@ -130,4 +133,4 @@
 - [Resultados legados 2020](https://drive.google.com/drive/folders/1iZKAeZPEb6JOlH8KfqsR6-wqI1ygmojI)
 - [Padrão dos notebooks](07_PADRAO_NOTEBOOKS.md)
 
-**Próxima ação prioritária (EXP-02C preparado, 17/11/2026):** preservar a investigação **63 × 9** como limitação de reprodutibilidade (sensibilidade ao filtro demonstrada, causa exata não comprovada). No [EXP-02A](experiments/EXP-02A-inventario-e-triagem-2026.md) recuperamos e documentamos a **execução legada de 2026**, e identificamos documentalmente os seis candidatos adicionais. Não reexecutar 2026 como teste independente novo nem apresentar precisão de 33,3%/seis FPs como ground truth. Próxima etapa: **completar 3 páginas de logs pendentes de MCT-XEN, verificar proxies na data histórica, ampliar auditoria e reunir positivos de outro protocolo e negativos revisados** para divisão por contrato/período. A situação do e-mail aos autores só deve constar como ausência de resposta se ainda persistir na data de fechamento do manuscrito.
+**Próxima ação prioritária (EXP-02C executado e manuscrito iniciado, 17/11/2026):** preservar a investigação **63 × 9** como limitação de reprodutibilidade (sensibilidade ao filtro demonstrada, causa exata não comprovada). No [EXP-02A](experiments/EXP-02A-inventario-e-triagem-2026.md) recuperamos e documentamos a **execução legada de 2026**, e identificamos documentalmente os seis candidatos adicionais. Não reexecutar 2026 como teste independente novo nem apresentar precisão de 33,3%/seis FPs como ground truth. Próxima etapa: **completar 3 páginas de logs pendentes de MCT-XEN, verificar proxies na data histórica, ampliar auditoria e reunir positivos de outro protocolo e negativos revisados** para divisão por contrato/período. A situação do e-mail aos autores só deve constar como ausência de resposta se ainda persistir na data de fechamento do manuscrito.

@@ -105,6 +105,16 @@
 - [ ] Auditar atividade exata dos seis candidatos em 15/01/2026, incluindo implementação histórica de proxies, e revisão independente de rótulos negativos.
 - [ ] Obter positivos de **outros protocolos de mixers** e período verdadeiramente novo para holdout por protocolo, evitando reaproveitar 2026 como teste confirmatório novo.
 
+
+### Biblioteca de estudo, revisão bibliográfica e preparação de submissão (17/11/2026)
+- [x] Criar [biblioteca NotebookLM no Drive](https://drive.google.com/drive/folders/1gnpcC5Y9yAZankjGSk5hIsW-nBXFmMYs) com oito subpastas, conceitos, evolução e suporte à preparação do manuscrito.
+- [x] Inserir **5 PDFs enviados pelo pesquisador** (Akopova, GNN 2025, StealthLink 2025, FPTracer 2026, MixGuard 2026) e cópia do **artigo-base SBSeg 2025** na pasta de artigos.
+- [x] Preparar e enviar **10 PDFs didáticos**: guia de leitura, 4 aulas, linha do tempo EXP-01/02, revisão bibliográfica comparativa, fichamento de artigos adicionais, flashcards/laboratórios e plano de artigo.
+- [x] Versionar [roteiro de estudos](estudo/README.md), [histórico experimental](estudo/evolucao-experimental.md), [revisão](literatura/revisao-bibliografica-2026.md), [links de 5 PDFs adicionais](literatura/artigos-adicionais-links.md) e [plano de publicação](manuscrito/plano-de-publicacao.md).
+- [ ] **PDFs adicionais:** baixar manualmente os 5 artigos com links diretos e colocá-los em [04_ARTIGOS_ADICIONAIS](https://drive.google.com/drive/folders/1aDqUFahABvsNuAeGbAeYh950nXFpmhan); transferência direta externa não disponível nesta sessão.
+- [ ] Atualizar fichamentos com **DOI e status editorial verificados** antes da submissão; arXiv não implica aceite.
+- [ ] Executar experimento de **rótulos históricos** dos seis casos 2026 e **holdout de protocolos mixers**; melhoria de precisão permanece hipótese até avaliação independente.
+
 ## Evidências principais
 
 - [Artigo original no Drive](https://drive.google.com/file/d/1FflHcOmD3lsO6HeGOp4D85RQbQz7c4EG/view)

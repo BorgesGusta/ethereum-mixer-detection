@@ -14,7 +14,7 @@ Eles serão criados progressivamente após a extração de funções para `src/e
 
 ## Primeira consolidação
 
-O [01_reproducao.ipynb](01_reproducao.ipynb) está publicado como **versão inicial, ainda não executada/validada no Colab**. Ele trabalha com os Parquets já processados, carrega os módulos versionados de `src/ethmix` e grava relatórios novos por execução. Para repositório privado, configurar no Colab Secret `GITHUB_TOKEN` com acesso somente leitura aos conteúdos deste repositório ou usar `REPO_LOCAL`.
+O [01_reproducao.ipynb](01_reproducao.ipynb) está publicado como **versão inicial, ainda não executada/validada no Colab**. Ele trabalha com os Parquets já processados, carrega os módulos versionados de `src/ethmix` e grava relatórios novos por execução. O notebook carrega os módulos diretamente da sua pasta própria no Drive (`src/ethmix/`) e verifica SHA-256. **Não é necessário token de GitHub para executar**.
 
 Os testes `tests/test_reproducao.py` estão escritos, mas ainda precisam ser executados em ambiente com dependências instaladas. A equivalência de hashes de datasets não substitui testes de paridade de previsão e resultados.
 
@@ -28,4 +28,8 @@ Os testes `tests/test_reproducao.py` estão escritos, mas ainda precisam ser exe
 
 ### Correção do Drive oficial (17/11/2026)
 
-A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; não é o caminho canônico. A cópia de execução está em [Notebooks ativos no Drive próprio](https://drive.google.com/drive/folders/1VNdVfqmHt-csEcbh9M9SLaV_IgvpGwJ4), arquivo [01_reproducao.ipynb](https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view). A versão GitHub usa o caminho `MyDrive/Segurança de Redes de Computadores/Projeto_Mixers_Ethereum`; é necessária execução de paridade antes de considerar o pipeline validado.
+A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; não é o caminho canônico. A cópia de execução está em [Notebooks ativos no Drive próprio](https://drive.google.com/drive/folders/1VNdVfqmHt-csEcbh9M9SLaV_IgvpGwJ4), arquivo [01_reproducao.ipynb](https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view). A versão GitHub e a cópia no Drive próprio foram sincronizadas em 17/11/2026; ambas usam `MyDrive/Segurança de Redes de Computadores/Projeto_Mixers_Ethereum` e os módulos `src/ethmix/`. A execução de paridade ainda é necessária para validar resultados.
+
+### Inicialização simplificada (17/11/2026)
+
+`01_reproducao.ipynb` agora monta o Drive antes de importar o código e confere SHA-256 dos três módulos em `src/ethmix/`, sincronizados com o GitHub. A autenticação no GitHub não é necessária no Colab. **A cópia do notebook e os módulos estão no Drive próprio; o GitHub continua sendo a fonte versionada.**

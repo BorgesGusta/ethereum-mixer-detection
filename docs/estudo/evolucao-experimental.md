@@ -31,7 +31,7 @@ São **23 janelas positivas de um único contrato Tornado** ao longo de 23 dias 
 | EXP-01I/J | Que mudanças afetam os alertas? | Filtro mínimo 1/5/10/20 tx produz **49/14/9/7** alertas com mesmo modelo e limiar; não explica 63 |
 | EXP-02 | Como avaliar generalização? | Protocolo por período/contrato com ground truth auditável preparado |
 | EXP-02A | Já existem resultados 2026? | **Sim, teste legado** em 15/01/2026: 20.214 elegíveis, 9 alertas e 3 pools Tornado conhecidos |
-| EXP-02B | Como verificar 6 alertas extras em 2026? | Protocolo planejado para funções, eventos, transações e implementação de proxies; **não executado** |
+| EXP-02B | Como verificar 6 alertas extras em 2026? | **Executado em 17/11/2026:** 315 transações diretas nos seis contratos, 18/18 hashes e remetentes/destinatários/dias conferidos; 15/18 páginas de logs completas, 3 do MCT-XEN pendentes; rótulos indeterminados |
 
 ## Entendendo o resultado de sensibilidade
 
@@ -66,3 +66,13 @@ EXP-02B: https://github.com/BorgesGusta/ethereum-mixer-detection/blob/main/docs/
 3. Como a falta de archive RPC deve ser relatada?
 4. Por que o teste 2026 é legado, não novo?
 5. Qual seria o próximo experimento capaz de transformar hipótese de confusão com bridges em contribuição científica?
+
+## Atualização — EXP-02B executado em 17/11/2026
+
+- Para os seis contratos alertados em 15/01/2026, as contagens do parquet intermediário coincidem com as do ranking legado: **83 OKX, 16 ApeCoin, 66 SwappableBridge, 119 CCIP Router, 15 MCT-XEN e 16 Wormhole**, total **315**.
+- O Blockscout confirmou as **18 transações amostradas** (primeira, central e última de cada contrato), com hash, remetente, destinatário e data iguais aos do intermediário.
+- Funções observadas na amostra: `send`, `swapAndBridge`, `ccipSend`, `batchClaimRank`, `deliver`, mais seletores não decodificados `0xec5b999d` e `0x98190f47`.
+- **15 de 18 páginas de logs completas**. O MCT-XEN tem **3 consultas de logs com continuação** (`next_page_params`); 150 logs capturados são apenas a primeira página de cada transação.
+- Metadados atuais indicam proxies EIP-1967 em OKX, MCT-XEN e Wormhole; as implementações vigentes em janeiro/2026 não foram comprovadas.
+- **Não é possível ainda chamar os seis de falsos positivos nem calcular precisão geral.** Os dados sustentam melhor a hipótese de confusão com serviços de interoperabilidade e operações em lote, não sua validação definitiva.
+- [Relatório completo e links dos seis CSVs/manifesto](../experiments/EXP-02B-resultados-auditoria-amostral-2026.md).

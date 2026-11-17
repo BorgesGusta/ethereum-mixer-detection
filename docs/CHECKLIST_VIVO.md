@@ -29,7 +29,9 @@
 - [x] Publicar etapa didática de diagnóstico no próprio notebook 01 (gráficos de probabilidade, curva de limiares e exportação dos scores por endereço)
 - [x] Executar o diagnóstico no Colab e conferir os cinco artefatos produzidos em 17/11/2026 (4.038 elegíveis; nove alertas no limiar 0,50)
 - [x] Identificar um pool adicional de **100 ETH (0xa160…f291)** entre os nove alertas, com score 0,87, sem rótulo `tornado` no parquet; cruzamento com relatório anterior confirma o pool conhecido. **Referência artigo: 3/3; referência expandida: 4 conhecidos entre 9**.
-- [ ] Auditar a rotulagem da classe de referência e investigar os cinco alertas restantes
+- [x] Auditar documentalmente os nove alertas: 3 pools de referência + pool 100 ETH conhecido + 2 contratos identificados externamente (ForTube BANK e zkSync) + 3 ainda não identificados
+- [ ] Verificar independentemente na blockchain a identidade e atividade dos três restantes, além de validar rótulos negativos sem presumir falsos positivos
+- [ ] Auditar a rotulagem da classe de referência e os critérios de negativos
 - [x] Conferir que 1.114.702 transações e as 239 do Tornado Cash coincidem com o artigo no recorte 2020
 - [x] Localizar diferença de contagem de endereços: **230.658 destinatários únicos**, exatamente o número publicado; 294.232 remetentes únicos e 377.296 na união. Verificar no artigo se 'endereços distintos' corresponde à projeção de destinatários.
 - [ ] Conferir identificação exata e scores dos nove endereços versus os relatórios legados
@@ -61,6 +63,15 @@
 | Endereços sinalizados | **63** (3 Tornado, 60 restantes classificados pelos autores como outros serviços) | **9** no limiar 0,50 (3 Tornado, 6 demais **não verificados independentemente**) |
 
 **Resultado cientificamente permitido:** metodologia geral e recuperação dos três contratos foram reproduzidas; **o total de alertas difere significativamente (9 vs 63)** e o protocolo completo ainda não foi demonstrado como equivalente. O F1 médio de CV de nosso treino (0,9778) não é uma métrica comparável publicada pelos autores. Não chamar os alertas adicionais de falsos positivos antes de verificação.
+
+
+## Triagem documental dos nove alertas (17/11/2026)
+
+- [x] Produzir [tabela auditável com 9 IDs, scores e fonte](experiments/EXP-01C-triagem-9-alertas.csv).
+- [x] Produzir [relatório com limites dos rótulos](experiments/EXP-01C-triagem-9-alertas.md).
+- [x] Confirmar 4 contratos Tornado conhecidos na referência expandida (3 no artigo + pool 100 ETH).
+- [x] Encontrar fontes documentais para outros dois alertas: ForTube BANK e zkSync; **não tratá-los ainda como negativos verificados**.
+- [ ] Investigar três IDs sem identificação corroborada: 0x5e60…, 0x98f1…, 0xe113….
 
 ## Evidências principais
 

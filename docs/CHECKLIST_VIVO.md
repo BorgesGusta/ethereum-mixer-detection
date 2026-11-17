@@ -77,8 +77,11 @@
 - [x] Preparar etapa 10 no **mesmo notebook 01** para conferir, a partir de `data/interim/test_20201029.parquet`, transações de três endereços, contagens e quatro features versus dataset processado (gráfico e relatório; sintaxe validada, **execução Colab pendente**).
 - [x] **Executar etapa 10 no Colab (17/11/2026)**, conferir 4 artefatos no Drive: 3 endereços, 12/12 features e n_tx em paridade numérica exata com dataset processado; 53/10/10 tx, 27/10/1 remetentes distintos. [Relatório EXP-01E](experiments/EXP-01E-auditoria-historica-features.md).
 - [x] Preparar etapa 11 do notebook 01: coleta externa pelo Blockscout com paginação, eventos `Upgraded`, transações de 29/10/2020 e **indicador explícito de cobertura**. Código validado sintaticamente e versionado, mas ainda sem execução Colab.
-- [ ] Executar etapa 11 no Colab e conferir os 4 artefatos gerados, inclusive status de paginação.
-- [ ] Auditar eventos de upgrade e identidade histórica do proxy (implementações inicial/atual diferem; data de mudança não verificada). **Se não alcançar 2020, registrar resultado como inconclusivo.**
+- [x] Executar etapa 11 no Colab, conferir os quatro artefatos: [EXP-01F](experiments/EXP-01F-blockscout-2020-cobertura.md). API HTTP 200, SmartEther 10 tx e DSProxy 10 tx com cobertura integral da data; proxy `transactions` e `logs` ainda limitados (30 páginas; datas mais antigas 06/11 e 05/11/2020).
+- [x] Encontrar dois eventos `Upgraded` posteriores a 29/10/2020: 12/11/2020 (impl. `0x7497…`) e 25/04/2022 (impl. atual `0xee2f…`). **Os tx_hash não foram extraídos no CSV e ainda precisam verificação.**
+- [ ] Identificar a implementação **em 29/10/2020**; a consulta de logs não chegou até essa data e não exclui upgrades anteriores.
+- [ ] Comparar **hash a hash** as 20 transações recuperadas externamente com o arquivo intermediário, não apenas por contagem.
+- [ ] Validar as 53 transações do proxy em fonte independente com cobertura histórica completa.
 - [ ] Conferir atividade do contrato em 29/10/2020 **também diretamente na blockchain**; a paridade interim→processed concluída é apenas verificação interna, não fonte independente.
 
 ## Evidências principais

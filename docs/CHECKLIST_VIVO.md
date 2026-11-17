@@ -80,8 +80,9 @@
 - [x] Executar etapa 11 no Colab, conferir os quatro artefatos: [EXP-01F](experiments/EXP-01F-blockscout-2020-cobertura.md). API HTTP 200, SmartEther 10 tx e DSProxy 10 tx com cobertura integral da data; proxy `transactions` e `logs` ainda limitados (30 páginas; datas mais antigas 06/11 e 05/11/2020).
 - [x] Encontrar dois eventos `Upgraded` posteriores a 29/10/2020: 12/11/2020 (impl. `0x7497…`) e 25/04/2022 (impl. atual `0xee2f…`). **Os tx_hash não foram extraídos no CSV e ainda precisam verificação.**
 - [ ] Identificar a implementação **em 29/10/2020**; a consulta de logs não chegou até essa data e não exclui upgrades anteriores.
-- [ ] Comparar **hash a hash** as 20 transações recuperadas externamente com o arquivo intermediário, não apenas por contagem.
-- [ ] Validar as 53 transações do proxy em fonte independente com cobertura histórica completa.
+- [x] **Comparar hash a hash 20 transações da API Blockscout com o dump bruto Blockchair de 29/10/2020**: 20/20 hashes, remetentes, destinatários e blocos idênticos; SmartEther 10/10 e DSProxy 10/10. [Relatório EXP-01G](experiments/EXP-01G-auditoria-hashes-blockchair-blockscout.md); [script reproduzível](../scripts/auditar_hashes_2020.py).
+- [ ] Validar as 53 transações do proxy em fonte independente com cobertura histórica completa (a chamada anterior não chegou a 29/10/2020; não interpretar zero API como zero tx).
+- [ ] Consultar **implementação do proxy no bloco histórico de 29/10/2020** via slot EIP-1967 com provedor de arquivo, ou logs de `Upgraded` filtrados por intervalo (registros anteriores a 12/11/2020 desconhecidos).
 - [ ] Conferir atividade do contrato em 29/10/2020 **também diretamente na blockchain**; a paridade interim→processed concluída é apenas verificação interna, não fonte independente.
 
 ## Evidências principais

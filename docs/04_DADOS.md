@@ -1,6 +1,8 @@
 # Dados, proveniência e Drive
 
-**Pasta principal:** https://drive.google.com/drive/folders/1VgyDm4okxLmt7GXf0diT560SAjYfgM9b
+**Pasta principal oficial (própria):** https://drive.google.com/drive/folders/1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj
+
+**Fonte histórica compartilhada por Bruno:** https://drive.google.com/drive/folders/1VgyDm4okxLmt7GXf0diT560SAjYfgM9b — não usar como local padrão de execução.
 
 ## Inventário essencial confirmado
 
@@ -51,3 +53,13 @@ Foi criada nela uma estrutura adicional compatível com o pipeline `data/raw`, `
 **Pendências importantes:** (1) confirmar com o usuário qual pasta é efetivamente dele e qual é de Bruno — a propriedade não foi comprovada pelos metadados do conector; (2) conferir hashes SHA-256 dos arquivos binários copiados e revisar documentos nativos; (3) adaptar o notebook consolidado à pasta escolhida; (4) somente depois retirar o atalho do Drive, sem apagar a pasta ou dados de terceiros.
 
 Até essa confirmação, o GitHub permanece a fonte de verdade para código; as duas pastas de dados do Drive devem ser consideradas como **origem e cópia em processo de validação**, sem designação definitiva de uma delas como canônica.
+
+
+## Definição oficial confirmada — 17/11/2026
+
+O usuário confirmou que `mixers-ethereum` é pasta **compartilhada pelo Bruno**, enquanto a pasta de trabalho própria será `Segurança de Redes de Computadores/Projeto_Mixers_Ethereum`.
+
+- O atalho `mixers-ethereum` (ID `1G2LLuVFtRHGf1GdWd3nub-HsDOFkzGT0`) foi **removido apenas do Meu Drive do usuário**. A pasta original compartilhada e os arquivos do Bruno **não foram excluídos**.
+- Cópias de dados da pasta do Bruno foram realizadas na pasta própria. Contagem de nomes e tamanho reportado dos arquivos comuns coincide no primeiro nível, mas falta conferir SHA-256 completo dos binários e equivalência de documentos nativos.
+- A versão ativa de `01_reproducao.ipynb` foi corrigida para usar explicitamente o caminho da pasta própria no Google Colab. A cópia no Drive próprio está em https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view.
+- **Não apagar originais nem chamar a migração de integralmente validada** antes de inventário recursivo e hashes.

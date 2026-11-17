@@ -74,7 +74,10 @@
 - [x] Pesquisar os três endereços nas fontes públicas indexadas; **nenhum nome foi confirmado**, e acesso direto a exploradores não estava disponível nesta sessão. Manter o status *não identificado*, não inferir EOA/mixer.
 - [x] Preparar etapa 9 no mesmo notebook 01: consulta aos endpoints públicos do Blockscout, preservando respostas e erros para auditoria, com salvamento opcional no Drive. Notebook validado sintaticamente, **a consulta NÃO foi executada no Colab ainda**.
 - [x] **Executar etapa 9 no Colab**: seis requisições ao Blockscout retornaram HTTP 200, com três contratos identificados (AdminUpgradeabilityProxy, token ERC-20 SmartEther e DSProxy). [Relatório e evidências](experiments/EXP-01D-triagem-onchain-3.md)
-- [ ] Auditar funções e atividade dos três contratos **na data 29/10/2020**, especialmente histórico de implementação do proxy upgradeable; não considerá-los negativos verificados.
+- [x] Preparar etapa 10 no **mesmo notebook 01** para conferir, a partir de `data/interim/test_20201029.parquet`, transações de três endereços, contagens e quatro features versus dataset processado (gráfico e relatório; sintaxe validada, **execução Colab pendente**).
+- [ ] Executar etapa 10 no Colab e conferir CSVs, gráfico e manifesto no Drive.
+- [ ] Auditar eventos de upgrade e identidade histórica do proxy (a implementação inicial e a atual diferem, mas data da mudança não verificada).
+- [ ] Conferir atividade do contrato em 29/10/2020 **também diretamente na blockchain**; o intermediário histórico sozinho não é fonte independente.
 
 ## Evidências principais
 

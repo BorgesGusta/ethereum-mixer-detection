@@ -1,0 +1,21 @@
+{
+  "experimento": "EXP-02A-matriz-documental-2026",
+  "data_inventario_utc": "2026-11-17",
+  "data_alvo": "2026-01-15",
+  "nao_novo_teste": true,
+  "nao_ha_novo_modelo": true,
+  "avaliados_reportados_originalmente": 20214,
+  "alertas_2026_limiar_congelado_085": 9,
+  "positivos_referencia": 3,
+  "outros_identificados_documentalmente": 6,
+  "ground_truth_negativo_independente_disponivel": 0,
+  "sha256_csv_sinalizados_original": "5e989df3b50b2e5f84cab01af7fef4861dcb5eb63ecd0a2f5ae9f62ed9e8a260",
+  "sha256_csv_matriz": "3eedc8c95e862954b5d0fbfaf5097d27ada83fd9bd933becab909c235287589d",
+  "ressalvas": [
+    "O limiar 0,85 foi selecionado em validacao 2020, previamente muito explorada; nao escolher novamente com 2026",
+    "Enderecos associados a serviços nao são provas definitivas de classe negativa",
+    "Nenhum dos seis candidatos adicionais tem auditoria historica por tx especifica de 15/01/2026",
+    "A amostra positiva da classe mixer vem do mesmo protocolo Tornado Cash, sem holdout entre protocolos",
+    "Nao utilizar precisao 0.333 nem seis falsos positivos como ground truth"
+  ]
+}

@@ -55,6 +55,9 @@
 
 ## Por que essa reprodução ainda não é exata?
 
+**Checagem adicional no texto original (17/11/2026):** a seção 4 do artigo menciona explicitamente **balanceamento por reamostragem antes do RandomForestClassifier**, além de 100 negativos com ≥10 transações. Portanto, o uso de reamostragem não é, por si só, uma divergência comprovada. Permanecem não especificados na mesma granularidade: sorteio exato dos 100 endereços, definição das 23 janelas positivas da nossa cópia, arredondamentos das entropias e decisões de pré-processamento.
+
+
 | Ponto | Autores (PDF, seções 4–5) | Nossa reprodução verificada |
 |---|---|---|
 | Modelo | Random Forest, 100 árvores, profundidade 5, classes balanceadas, probabilidade >0,50 | Mesma configuração central |

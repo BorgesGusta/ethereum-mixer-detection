@@ -101,6 +101,7 @@
 - [x] Redigir [EXP-02 — Protocolo temporal e por contrato](experiments/EXP-02-protocolo-temporal-contrato.md) com critérios de prontidão, baseline, métricas, guardas contra vazamento e limitações de rotulagem. **Protocolo planejado, sem execução de novos modelos.**
 - [x] **Inventariar dados e resultado legado de 2026:** notebook 07b já avaliou **15/01/2026** com limiar congelado 0,85, 20.214 elegíveis, 9 alertas e 3/3 pools conhecidos. [EXP-02A](experiments/EXP-02A-inventario-e-triagem-2026.md).
 - [x] **Triagem documental dos nove alertas 2026:** 3 pools Tornado do artigo e 6 contratos associados a OKX DEX, ApeCoin OFT Adapter/LayerZero, SwappableBridgeUniswapV3, Chainlink CCIP Router, MCT-XEN Batch Minter e Wormhole Relayer. [Matriz auditável](experiments/EXP-02A-matriz-triagem-2026.csv); [manifesto](experiments/EXP-02A-manifesto.json). **Ainda não são seis falsos positivos comprovados.**
+- [x] **Formalizar protocolo histórico de revisão dos seis contratos**, com cobertura de transações, ABI, eventos, upgrades e dupla revisão documental. [EXP-02B](experiments/EXP-02B-protocolo-auditoria-2026.md); **nenhuma nova coleta executada ainda**.
 - [ ] Auditar atividade exata dos seis candidatos em 15/01/2026, incluindo implementação histórica de proxies, e revisão independente de rótulos negativos.
 - [ ] Obter positivos de **outros protocolos de mixers** e período verdadeiramente novo para holdout por protocolo, evitando reaproveitar 2026 como teste confirmatório novo.
 

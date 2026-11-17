@@ -90,6 +90,16 @@
 - [ ] Verificar histórico de upgrades ao longo de 29/10/2020 para não presumir que a implementação do final do dia valeu por todas as 53 transações.
 - [ ] Conferir atividade do contrato em 29/10/2020 **também diretamente na blockchain**; a paridade interim→processed concluída é apenas verificação interna, não fonte independente.
 
+
+### EXP-01I — Auditoria do protocolo e nova análise controlada (17/11/2026)
+- [x] Confrontar **artigo original (seções 4–5)** com notebooks legados 03/03_v2 e módulos canônicos. [Relatório EXP-01I](experiments/EXP-01I-auditoria-protocolo-e-limites.md).
+- [x] Identificar escolhas documentadas na reprodução, mas não detalhadas no artigo: **100 negativos escolhidos dos 147 aprovados** em 15/03/2025; discretização de entropias em **4/4/6 casas**; janela por destinatário-dia UTC; inclusão de Router **condicional à existência do arquivo**; transição legada de MIN_TX 5 para 10.
+- [x] Registrar que o artigo **também descreve reamostragem**; isso por si só não explica 63 × 9. No treino atual, oversampling até 100/100 torna pesos `balanced` analiticamente redundantes, sujeito à verificação de scores no cenário controlado.
+- [x] **Preparar e sincronizar etapa 13 no mesmo notebook 01**: cruzamento de balanceamento, sementes e filtros de elegibilidade, limiar fixo 0,50; registro de CSVs e manifesto. **Execução no Colab pendente.**
+- [x] Redigir [seção provisória de limitações e contribuições](manuscrito/limitacoes-e-contribuicoes.md), sem alegar superioridade preditiva ou causalidade não demonstrada.
+- [ ] **Executar etapa 13 no Colab e auditar resultados**, diferenciando hipóteses, variações experimentais e fatos da implementação dos autores.
+- [ ] Redigir protocolo de avaliação por **tempo e contrato** e ground truth externo auditado, sem vazamento por janelas do mesmo pool.
+
 ## Evidências principais
 
 - [Artigo original no Drive](https://drive.google.com/file/d/1FflHcOmD3lsO6HeGOp4D85RQbQz7c4EG/view)
@@ -98,4 +108,4 @@
 - [Resultados legados 2020](https://drive.google.com/drive/folders/1iZKAeZPEb6JOlH8KfqsR6-wqI1ygmojI)
 - [Padrão dos notebooks](07_PADRAO_NOTEBOOKS.md)
 
-**Próxima ação prioritária (após etapa 12 em 17/11/2026):** retomar a investigação **63 × 9 alertas**, concentrando-se na seleção/rotulagem das 100 amostras negativas, 23 positivas, agregação e elegibilidade por endereço-dia, engenharia das quatro features, tratamento do balanceamento e regras de predição. **Não alterar limiar apenas para obter 63.** A implementação do proxy em outubro/2020 permanece **pendência técnica separada** por falta de resposta histórica válida; [EXP-01H](experiments/EXP-01H-estado-proxy-historico-inconclusivo.md). Aguardar eventual resposta dos autores sem interromper a pesquisa.
+**Próxima ação prioritária (17/11/2026):** executar a **etapa 13** e interpretar o efeito isolado de políticas de balanceamento, sementes aleatórias e elegibilidade no total de alertas com limiar fixo 0,50; [EXP-01I](experiments/EXP-01I-auditoria-protocolo-e-limites.md). Não forçar a contagem de 63. Manter a diferença **63 × 9** como limitação de reprodutibilidade se permanecer sem explicação demonstrada. O pedido aos autores foi enviado em 17/11/2026; mencionar ausência de resposta **somente se persistir no fechamento**. Apresentar as melhorias comprovadas de auditoria e rastreabilidade sem declarar maior acurácia/segurança do detector sem testes comparáveis. Posteriormente, definir holdout por tempo e contrato e avaliar modelos alternativos.

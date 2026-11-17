@@ -33,3 +33,10 @@ A pasta `mixers-ethereum` foi identificada como compartilhada por Bruno; não é
 ### Inicialização simplificada (17/11/2026)
 
 `01_reproducao.ipynb` agora monta o Drive antes de importar o código e confere SHA-256 dos três módulos em `src/ethmix/`, sincronizados com o GitHub. A autenticação no GitHub não é necessária no Colab. **A cópia do notebook e os módulos estão no Drive próprio; o GitHub continua sendo a fonte versionada.**
+
+
+### Correção de localização (17/11/2026)
+
+Se a pasta `Segurança de Redes de Computadores/Projeto_Mixers_Ethereum` não aparecer em `/content/drive/MyDrive`, **não criar atalhos adicionais nem mudar para o Drive de Bruno**. O `01_reproducao.ipynb` atualizado utiliza a API Google Drive com autenticação Google Colab e os IDs **das cópias do Drive próprio**, validando SHA-256 e salvando os relatórios no diretório `results/`. Não depende de caminho montado nem requer `GITHUB_TOKEN`.
+
+A execução completa permanece **pendente de validação no Colab**. Cópia de trabalho no [Drive próprio](https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view).

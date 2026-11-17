@@ -1,0 +1,30 @@
+# Manuscrito — Rascunho de limitações e contribuições metodológicas
+
+**Estado:** texto provisório de trabalho, fundamentado nos experimentos EXP-01B–EXP-01I. Não declarar superioridade de modelo ou igualdade com o protocolo completo dos autores antes dos novos experimentos. Atualizar se houver resposta dos autores ou resultados da etapa 13.
+
+## Limitações e reprodutibilidade
+
+Buscou-se reproduzir a metodologia de detecção de mixers na Ethereum apresentada por Leale e Sendin (SBSeg 2025), utilizando Random Forest e as quatro características transacionais descritas no artigo. No conjunto de teste de 29 de outubro de 2020, foram reconciliadas as 1.114.702 transações e as 239 interações direcionadas aos três contratos Tornado Cash de referência, os quais foram corretamente sinalizados pela reprodução. Entretanto, enquanto o estudo original relata 63 endereços classificados como possíveis mixers, a implementação reproduzida identificou nove, sob o limiar de decisão 0,50. A divergência de 54 alertas permanece sem explicação causal comprovada. A ausência da lista exata de endereços sinalizados e de detalhes completos da amostragem dos negativos, agregação temporal, discretização das características e execução do treinamento limita uma comparação estritamente equivalente. Foi encaminhada solicitação de esclarecimentos aos autores em 17 de novembro de 2026; **caso não haja resposta até o fechamento do artigo**, essa ausência deverá ser registrada apenas como limitação de acesso a detalhes metodológicos, e não como evidência de erro no estudo original.
+
+Adicionalmente, o conjunto de treino disponível na reprodução contém 23 janelas positivas associadas a um único contrato Tornado Cash e 100 negativas construídas a partir de endereços selecionados em um dia de março de 2025. Assim, métricas obtidas por validação cruzada estratificada por linha são resultados internos e não demonstram, por si, generalização para novos contratos, protocolos ou períodos. A inspeção documental e as consultas externas realizadas tampouco fornecem rótulos negativos independentes para todos os endereços sinalizados. A determinação da implementação histórica de um contrato proxy também permaneceu inconclusiva devido à indisponibilidade de resposta válida para o estado da Ethereum no bloco analisado.
+
+## Contribuições metodológicas da extensão experimental
+
+Como extensão da reprodução, o projeto estruturou um processo de auditoria e rastreabilidade composto por versionamento do código e dos notebooks, conferência de integridade por SHA-256, manifestos de execução, documentação das escolhas de pré-processamento e separação explícita entre rótulos conhecidos, identificações documentais e classificações do modelo. Houve cruzamento com uma segunda fonte de dados blockchain: para dois contratos examinados no dia de teste, 20 de 20 hashes de transações recuperados pelo Blockscout coincidiram com o dump Blockchair, incluindo remetentes, destinatários e números de bloco. Também foi documentada a diferença de cobertura de eventos e transações históricas para um contrato atualizável, evitando inferências indevidas a partir de dados incompletos.
+
+Esses procedimentos **ampliam a auditabilidade e a precisão da interpretação das evidências disponíveis**, mas não demonstram, isoladamente, maior acurácia, recall, robustez adversarial ou segurança operacional do detector em comparação com o artigo original. Tais alegações exigem avaliação posterior com ground truth independente, separação temporal e por contrato, conjuntos equivalentes e métricas comparáveis.
+
+## Decisões redacionais
+
+- Descrever o trabalho original como referência metodológica, e a reprodução como **parcial**, não como replicação exata.
+- Tratar os resultados 63 e 9 como **medidos em implementações distintas com equivalência incompleta**, nunca como prova de que o resultado dos autores está errado.
+- Não chamar contratos não verificados de falsos positivos.
+- Usar os termos **rastreabilidade, integridade e auditoria metodológica** para controles implementados; reservar **segurança do classificador** para ensaios específicos.
+- Não registrar “os autores não responderam” como fato permanente. No fechamento do manuscrito, registrar a situação efetiva e a data-limite.
+- Vincular as alegações empíricas aos arquivos EXP-01B a EXP-01H; a etapa EXP-01I é **proposta/preparada** até execução de seus CSVs.
+
+## Próximos experimentos planejados
+
+1. Executar a análise controlada de sensibilidade (etapa 13 do notebook 01) com limiar fixo de 0,50 e relatar contagem/overlap sem escolha retrospectiva do cenário que mais se aproxima de 63.
+2. Projetar divisão por tempo e contrato, com rótulos externos auditáveis para positivo/negativo.
+3. Definir critérios de comparação com abordagens alternativas, incluindo métricas de precision, recall e F1 calculadas somente em dados com ground truth e sem vazamento entre grupos.

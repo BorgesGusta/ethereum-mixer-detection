@@ -69,3 +69,11 @@ EXP-02B (protocolo de rótulos): https://github.com/BorgesGusta/ethereum-mixer-d
 ## Aula 05 — Auditoria de rótulos e funções dos contratos (17/11/2026)
 
 Novo capítulo para o NotebookLM: [Aula 05 em Markdown](aula-05-auditoria-funcional-2026.md), [PDF no Drive](https://drive.google.com/file/d/1RDNhyOZSxTmZvFytyFlFitlgLH7CtL_p/view), [notebook EXP-02B](../../notebooks/13_EXP-02B_auditoria_funcional_2026.ipynb) e [protocolo experimental](../experiments/EXP-02B-protocolo-auditoria-2026.md). O código e as atividades estão preparados e testados com dados simulados; **a coleta real do dia 15/01/2026 ainda precisa ser executada no Colab**. Os seis candidatos continuam indeterminados até auditoria independente.
+
+## Aula 06 — Interpretar EXP-02B após execução real (17/11/2026)
+
+- [Material didático em Markdown](aula-06-resultados-auditoria-exp02b.md) com cinco perguntas e gabarito.
+- [PDF da Aula 06 no Drive (NotebookLM)](https://drive.google.com/file/d/1j0JFg75edoTnEo1La2_R5enULPAwSzJU/view).
+- [Relatório da execução EXP-02B](../experiments/EXP-02B-resultados-auditoria-amostral-2026.md) e [pasta com CSVs e manifesto](https://drive.google.com/drive/folders/1rV5mJ0rkINLML5aFUFnl0s7g1ybwrwOb).
+
+Conceitos centrais: contagem de universo, validação independente por amostra, paginação de logs, proxies atualizáveis, status indeterminado de rótulos e viés de verificação. **315 transações no intermediário não são 315 hashes auditados externamente**.

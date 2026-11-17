@@ -65,3 +65,7 @@ EXP-02A (triagem 2026): https://github.com/BorgesGusta/ethereum-mixer-detection/
 EXP-02B (protocolo de rótulos): https://github.com/BorgesGusta/ethereum-mixer-detection/blob/main/docs/experiments/EXP-02B-protocolo-auditoria-2026.md
 
 **Situação:** curso pronto para leitura; a verificação histórica de atividade de seis alertas de 2026 e a avaliação de novos protocolos de mixers continuam pendentes.
+
+## Aula 05 — Auditoria de rótulos e funções dos contratos (17/11/2026)
+
+Novo capítulo para o NotebookLM: [Aula 05 em Markdown](aula-05-auditoria-funcional-2026.md), [PDF no Drive](https://drive.google.com/file/d/1RDNhyOZSxTmZvFytyFlFitlgLH7CtL_p/view), [notebook EXP-02B](../../notebooks/13_EXP-02B_auditoria_funcional_2026.ipynb) e [protocolo experimental](../experiments/EXP-02B-protocolo-auditoria-2026.md). O código e as atividades estão preparados e testados com dados simulados; **a coleta real do dia 15/01/2026 ainda precisa ser executada no Colab**. Os seis candidatos continuam indeterminados até auditoria independente.

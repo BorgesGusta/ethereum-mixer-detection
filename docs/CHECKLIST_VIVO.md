@@ -73,7 +73,8 @@
 - [x] Encontrar fontes documentais para outros dois alertas: ForTube BANK e zkSync; **não tratá-los ainda como negativos verificados**.
 - [x] Pesquisar os três endereços nas fontes públicas indexadas; **nenhum nome foi confirmado**, e acesso direto a exploradores não estava disponível nesta sessão. Manter o status *não identificado*, não inferir EOA/mixer.
 - [x] Preparar etapa 9 no mesmo notebook 01: consulta aos endpoints públicos do Blockscout, preservando respostas e erros para auditoria, com salvamento opcional no Drive. Notebook validado sintaticamente, **a consulta NÃO foi executada no Colab ainda**.
-- [ ] Executar etapa 9 no Colab e verificar respostas/endereço/código dos três IDs (0x5e60…, 0x98f1…, 0xe113…).
+- [x] **Executar etapa 9 no Colab**: seis requisições ao Blockscout retornaram HTTP 200, com três contratos identificados (AdminUpgradeabilityProxy, token ERC-20 SmartEther e DSProxy). [Relatório e evidências](experiments/EXP-01D-triagem-onchain-3.md)
+- [ ] Auditar funções e atividade dos três contratos **na data 29/10/2020**, especialmente histórico de implementação do proxy upgradeable; não considerá-los negativos verificados.
 
 ## Evidências principais
 

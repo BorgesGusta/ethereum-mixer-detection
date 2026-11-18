@@ -26,3 +26,7 @@
 4. **Rótulo científico:** exige evidência adicional de retiradas e mecanismo de privacidade, revisão independente, definição da classe; **não atribuído automaticamente**.
 
 **Restrições:** não há ground truth novo, nem teste do Random Forest, nem avaliação de generalização para protocolo externo; artigo PDF suspenso.
+
+## Resultado pós-execução — 18/11/2026
+
+**O pesquisador executou o notebook.** [Relatório auditado EXP-06A](EXP-06A-resultados-auditoria-2026-11-18.md) e [arquivos íntegros no Drive](https://drive.google.com/drive/folders/1K83QFXRH_pGd5muiMNHhUxjNYdKwxt_l). **Criação inconclusiva**: transação candidata de sucesso no bloco 22153714 (sete blocos após o `deploymentBlock=22153707` da configuração), `created_contract` vazio; possibilidade de deploy interno/factory não confirmada. **Depósito inicial com interação confirmada**: transação de sucesso bloco 22167294, 3 logs completos em uma página, 2 emitidos pelo ETH pool. SHA-256 do JSON recuperado coincide com manifesto. Nenhum rótulo ou desempenho novo; investigar traces e criação interna em EXP-06B.

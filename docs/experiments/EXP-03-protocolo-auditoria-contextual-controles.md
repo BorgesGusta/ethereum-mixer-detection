@@ -66,3 +66,8 @@ A inspeção do notebook histórico [07b](../../notebooks/legacy/07b_teste_2026_
 - [Script de seleção somente por inferência](../../scripts/exp03_selecionar_controles.py) preparado: reproduz a regra do 07b (n_tx≥10, não Router, probabilidade >0,85) e **aborta** se 20.214 elegíveis, os nove endereços e seus scores não forem conciliados; escolhe seis controles provisórios por bandas de atividade e desempate determinístico.
 - [Procedimento Colab](EXP-03-como-executar-selecao-no-colab.md) para executar sem refazer os notebooks 07b/EXP-02B/EXP-02C. A instalação do leitor Parquet falhou no ambiente desta sessão por ausência de acesso à distribuição; **não houve inferência executada aqui**.
 - **Gate 1 permanece PENDENTE:** a lista de seis controles só existirá após execução comprovada e arquivo/manifesto conferidos. A seleção não comprova que os controles sejam contratos, nem negativos verdadeiros.
+
+
+### Notebook operacional publicado no Drive — 18/11/2026
+
+O notebook [`15_EXP-03_selecao_controles_2026.ipynb`](https://drive.google.com/file/d/15pzH8sNmB8oNYnGRtk9WAiuztmRR5Mzv/view?usp=drivesdk) foi enviado e conferido em `Projeto_Mixers_Ethereum/notebooks/00_ATIVOS/`, arquivo de **8.010 bytes** e SHA-256 **`f6a0dfb38eed7afcc4e3406ee6dac149a55f82916369d523c558ad56c10e48df`**. Possui seis células e executa o script fixado no commit `360d351962ef7aff7db7dc957fbeecbd182058df`. **Não executado no Colab até este registro**. Para rodar: abrir o arquivo com Google Colaboratory e selecionar **Ambiente de execução → Executar tudo**. A pasta de resultados só será criada após a paridade comprovada pelo script; ao finalizar, registrar o link aqui e conferir os outputs/manifesto. Nenhum arquivo anterior foi movido, renomeado ou sobrescrito.

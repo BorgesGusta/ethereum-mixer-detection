@@ -5,6 +5,10 @@
 
 > Toda atualização de pesquisa deve manter: **o que foi feito**, **por que**, **evidência**, **o que o resultado NÃO demonstra** e **próxima ação**. As caixas aqui são estado de execução; não significam aprovação científica sem evidência.
 
+## Sprint de 48 horas — 18 e 19/11/2026
+
+**Planejamento criado, execução ainda não iniciada:** acompanhar tarefas, gates GO/NO-GO, evidências e entregas no [checklist da sprint](SPRINT_48H_2026-11-18_19.md). Este registro não altera as caixas de conclusão dos experimentos legados. Atualizar somente após execução verificável.
+
 ## Estado do projeto
 
 **Comunicação científica:** [x] E-mail enviado aos dois autores em 17/11/2026 solicitando detalhes metodológicos, dados/código e lista dos 63 endereços. [ ] Resposta recebida e analisada. O envio não implica concordância ou resposta dos autores.

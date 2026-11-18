@@ -14,3 +14,18 @@
 | 16/11/2026 | Repositório oficial e organização da memória | Fase atual: documentação, migração controlada e preparação do estudo temporal |
 
 **Nota:** a data acima é o marco de atividade registrado; arquivos legados ainda precisam de vínculos a commit, hash e execução específica. A cronologia é versionada, nunca reescrita para apagar decisões anteriores.
+
+
+## Continuação da cronologia — 17/11/2026 (acréscimo, sem reescrever marcos anteriores)
+
+| Data | Marco | Evidência e escopo |
+|---|---|---|
+| 17/11/2026 | EXP-01J sensibilidade controlada | [Relatório](experiments/EXP-01J-resultados-sensibilidade-63x9.md): 49/14/9/7 alertas ao variar `min_tx` (1/5/10/20); 63×9 não resolvido |
+| 17/11/2026 | EXP-01G auditoria 2020 | [20/20 transações conferidas por hash](experiments/EXP-01G-auditoria-hashes-blockchair-blockscout.md), sem extrapolar ao universo inteiro |
+| 17/11/2026 | EXP-02A inventário 2026 | [Avaliação legada documentada](experiments/EXP-02A-inventario-e-triagem-2026.md), não novo teste cego |
+| 17/11/2026 | EXP-02B auditoria amostral 2026 | [Relatório](experiments/EXP-02B-resultados-auditoria-amostral-2026.md): 18/18 amostras conciliadas, 315 transações diretas no intermediário |
+| 17/11/2026 | EXP-02C paginação e seletores | [Relatório](experiments/EXP-02C-resultados-logs-e-seletores.md): três hashes MCT-XEN com 466 logs, proxies históricos pendentes |
+| 17/11/2026 | Manuscrito LaTeX v0.1 e apresentação preliminar | [Fontes](../artigo/overleaf/README.md); ainda sem build no Overleaf ou submissão |
+| 17/11/2026 | Consolidação documental | [Registro de inconsistências e decisões de atualização](CONSOLIDACAO_2026-11-17.md); não corresponde a nova execução experimental |
+
+**Nota de escopo:** datas são os marcos registrados em evidências versionadas. As fichas dos experimentos prevalecem sobre resumos antigos quando houver diferença de estágio ou de limite de inferência.

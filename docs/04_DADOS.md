@@ -27,7 +27,7 @@ As auditorias 12.00–12.02B guardam SHA-256 e schema dos arquivos em [resultado
 - Classificações de endereços sem verificação são `unverified`, não `negative`.
 - Dados de 2020 e 2026 foram explorados; criar teste futuro ainda não inspecionado para alegações confirmatórias.
 
-## Migração preventiva para pasta de projeto separada (17/11/2026)
+## Histórico da migração preventiva para pasta de projeto separada (17/11/2026) — narrativa anterior à decisão final
 
 Em resposta ao pedido de eliminar dependência de um atalho do colaborador Bruno, foi encontrada no Drive uma pasta alternativa `Segurança de Redes de Computadores/Projeto_Mixers_Ethereum` (ID `1Dkz-82gKd7q3woGZDjEHl9IhQNnC7hgj`). Ela tinha sete subpastas organizacionais vazias.
 
@@ -63,3 +63,8 @@ O usuário confirmou que `mixers-ethereum` é pasta **compartilhada pelo Bruno**
 - Cópias de dados da pasta do Bruno foram realizadas na pasta própria. Contagem de nomes e tamanho reportado dos arquivos comuns coincide no primeiro nível, mas falta conferir SHA-256 completo dos binários e equivalência de documentos nativos.
 - A versão ativa de `01_reproducao.ipynb` foi corrigida para usar explicitamente o caminho da pasta própria no Google Colab. A cópia no Drive próprio está em https://drive.google.com/file/d/1ma1KHywnIF0lZ3LvsYEk7Ts-2h_J4W69/view.
 - **Não apagar originais nem chamar a migração de integralmente validada** antes de inventário recursivo e hashes.
+
+
+## Interpretação vigente da migração — consolidação documental 17/11/2026
+
+A **definição oficial confirmada** acima prevalece sobre as instruções provisórias da seção histórica: a pasta `Projeto_Mixers_Ethereum` é o destino oficial de trabalho, e `mixers-ethereum` de Bruno é fonte histórica preservada. O notebook 01 ativo foi apontado para a pasta própria conforme registrado. **Não afirmar cópia plenamente íntegra** sem inventário recursivo e SHA-256 de todos os binários; divergências de metadados dos documentos nativos ainda requerem verificação de conteúdo. Esta atualização não executou uma nova cópia ou cálculo de hash.

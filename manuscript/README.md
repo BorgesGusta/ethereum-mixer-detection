@@ -1,6 +1,6 @@
 # Artigo científico — preparação para Overleaf
 
-**Não existe manuscrito definitivo nem projeto Overleaf conectado a este repositório.**
+**Atualização (17/11/2026):** existe um manuscrito **v0.1 em LaTeX**, versionado em [`artigo/overleaf/`](../artigo/overleaf/README.md). **Não** é manuscrito definitivo nem foi confirmada compilação no Overleaf, revisão ou submissão. Este diretório permanece como referência histórica; a fonte editável vigente é `artigo/overleaf/`.
 
 Estrutura sugerida: resumo, introdução, trabalhos relacionados, reprodução do artigo, dados e metodologia, experimentos de robustez, estudo temporal, resultados, ameaças à validade e conclusão.
 
@@ -9,4 +9,4 @@ Estrutura sugerida: resumo, introdução, trabalhos relacionados, reprodução d
 - Separar resultados reproduzidos, extensões exploratórias e testes confirmatórios.
 - Não afirmar causalidade das mudanças on-chain sem estratégia apropriada.
 - Não divulgar URLs de dados privados no artigo público sem revisar permissões.
-- Manter arquivos .tex e .bib versionados no GitHub quando iniciarmos a escrita no Overleaf.
+- Os arquivos `.tex` e `.bib` já estão versionados no GitHub; preservar suas versões e conferir compilação antes de submissão.

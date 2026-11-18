@@ -21,3 +21,17 @@
 - [ ] Não repetir EXP-01J, EXP-02B ou EXP-02C sem identificar falha material documentada.
 
 **Conclusão permitida:** existem referências rastreáveis para os quatro marcos. A rastreabilidade **até a revisão exata executada** ainda está incompleta. O arquivo serve de mapa para completar essa lacuna com inspeção de evidências, não reexecução indiscriminada.
+
+## Checagem adicional: commits históricos e identidade do arquivo
+
+Consulta ao histórico do GitHub em 18/11/2026. Foram comparados os blobs dos arquivos **na revisão do commit histórico** e na `main` atual, com correspondência exata. Os commits são anteriores aos horários relatados das execuções; isso indica versões candidatas, **mas não substitui provar a cópia exata do Colab**.
+
+| Experimento | Arquivo | Commit candidato anterior à execução (UTC) | Blob no commit = blob atual? |
+|---|---|---|---|
+| EXP-01J | `notebooks/01_reproducao.ipynb` | [`9fd895a`](https://github.com/BorgesGusta/ethereum-mixer-detection/commit/9fd895a04b011838298d09917f6d339d3f9cd036), 17/11 14:25:53 | **Sim**, `5230f2cbbeeb56c6d1f4ab4b1c29f46ee7d46560`; relatório executado 14:29:36 |
+| EXP-02B | `notebooks/13_EXP-02B_auditoria_funcional_2026.ipynb` | [`05f9cc2`](https://github.com/BorgesGusta/ethereum-mixer-detection/commit/05f9cc21d20562b171b9dfe595a931c9acbba547), 17/11 15:38:14 | **Sim**, `27d84221cea08605e13c2fed273c0c72a5cb5d92`; execução 16:10:57 |
+| EXP-02B | `scripts/exp02b_auditoria_2026.py` | [`0414fc5`](https://github.com/BorgesGusta/ethereum-mixer-detection/commit/0414fc59fb485f65ca88d00694fb46d62c5ead1f), 17/11 15:38:19 | **Sim**, `764d9eba10dcd3be01b64c91a19223c0593a3412` |
+| EXP-02C | `notebooks/14_EXP-02C_logs_MCT_XEN_e_abi.ipynb` | [`4ca6583`](https://github.com/BorgesGusta/ethereum-mixer-detection/commit/4ca658323cd6a2ba17ba7864594eded62d681da1), 17/11 16:43:46 | **Sim**, `2affccf111c036692c7126351ee4dfc65cb01d72`; execução 17:25:57 |
+| EXP-02C | `scripts/exp02c_logs_abi.py` | [`53bf9d2`](https://github.com/BorgesGusta/ethereum-mixer-detection/commit/53bf9d2a8f74ef17b8517a1b0c7d89295c011fdb), 17/11 16:43:51 | **Sim**, `a3d89ec7663a216241c7e8eac1fd4cd28a14cd16` |
+
+**Estado atualizado:** arquivo e commit candidato comprovados por versão Git; cópia e execução do Colab continuam com vínculo **provável, não demonstrado de forma conclusiva**, porque o manifesto não registra os hashes Git dos notebooks. EXP-02A é inventário documental e seu notebook legado 07b requer verificação própria. Reexecução não necessária para fechar essa lacuna: preferir checagem dos metadados do notebook efetivamente executado no Drive.

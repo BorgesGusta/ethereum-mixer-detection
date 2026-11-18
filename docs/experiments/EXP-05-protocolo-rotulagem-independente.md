@@ -66,3 +66,11 @@ Cada revisor preencherá para **todos os 9 casos**:
 Gerados por `scripts/exp05_preparar_revisao.py` a partir do [ranking original de nove alertas](https://drive.google.com/file/d/11kWohs3VvdDGVjwsN_t-S8EQVix6n9mf/view) e [matriz EXP-04](https://drive.google.com/file/d/13MUk7BsmkSb7n6JdI3Ulu35e4n4WzDfS/view); sem novos acessos externos. Os dois arquivos de revisão são **modelos em branco**, não resultados de rotulagem.
 
 **Uso futuro no artigo:** método de criação de ground truth e risco de viés, distinguidos de execução e métricas. Não gerar PDF neste estágio.
+
+## Publicação operacional no Drive e controle de cegamento (18/11/2026)
+
+- [Pasta compartilhável de preparação EXP-05](https://drive.google.com/drive/folders/11Ph9gtKlyR2q3jyLfehcOPlNHf2OBU38), contendo [ficha de revisão A](https://drive.google.com/file/d/16KSagFDdEeFpqPUZJwSzEJ4zGARoKsM3/view) e [ficha de revisão B](https://drive.google.com/file/d/1DAEdYqViLXr36QJf9YrFzG2vgMCoIP39/view), protocolo e script gerador. **Compartilhar cada ficha apenas com o revisor designado**, para que A não veja respostas de B e vice-versa. Os CSVs são modelos vazios: criar cópia individual antes do preenchimento, sem substituir a versão original.
+- [Pasta separada, interna à coordenação, NÃO COMPARTILHAR](https://drive.google.com/drive/folders/1-U6awHaGi9-2N_n0V3_BbQHb-mZxZLcp): índice contendo informação de referência sobre a classe e manifesto de preparação (IDs originais preservados). A pasta interna **não está dentro da pasta compartilhável**; sua localização distinta não aplica automaticamente controle de acesso — **rever permissões antes de compartilhar documentos**.
+- **Testes locais de preparação aprovados:** duas fichas de 9 casos únicos, campos de classe/URL inicialmente vazios, ausência de colunas `prob`/`n_tx`/`rotulo` legado, prevenção de sobrescrita e bloqueio de ranking cujo SHA-256 difere do original.
+- [Gerador versionado no GitHub](../../scripts/exp05_preparar_revisao.py), commit `2d0e879a43c761219c10da8908e96bc9913df51b`; [protocolo versionado](EXP-05-protocolo-rotulagem-independente.md), commit inicial `935f971a773b80cfd433dec944c8b2cfda2bf3cb`.
+- **Status experimental permanece:** 0 fichas preenchidas, 0 novos rótulos científicos; somente preparação executada.

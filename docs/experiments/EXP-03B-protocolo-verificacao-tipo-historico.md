@@ -43,3 +43,7 @@
 ## Estado e vínculo ao artigo
 
 **Implementado e versionado, não executado nesta etapa.** Após execução real, auditar logs/manifestos no Drive e marcar o checklist. Anotar no [caderno científico vivo](../manuscrito/CADERNO_CIENTIFICO_VIVO.md), sem gerar PDF.
+
+## Adendo de execução real — 18/11/2026 UTC
+
+O pesquisador executou o notebook. Saídas em [pasta do Drive](https://drive.google.com/drive/folders/1WZ3tbWDY75Jmt_SBE8KX2EDbiUJzRKwu); [relatório auditado](EXP-03B-resultados-verificacao-historica-2026-11-18.md). As saídas coincidem com os SHA-256 registrados no manifesto. **12/12 consultas RPC geraram erros HTTP (403 ou 525); nenhuma prova de `eth_getCode` histórico foi obtida.** As seis tipagens e rótulos históricos continuam indeterminados. Blockscout respondeu 6/6 para metadados **atuais** (cinco `is_contract=false`, um `true` com `proxy_type=eip7702`). A marcação histórica 'NÃO EXECUTADO' no topo preserva o estado ao criar o protocolo; este adendo documenta a execução posterior. O EXP-03B **não validou** a comparabilidade dos controles e não autoriza novas métricas do classificador.

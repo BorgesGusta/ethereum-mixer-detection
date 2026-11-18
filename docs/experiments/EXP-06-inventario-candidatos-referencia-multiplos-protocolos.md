@@ -47,3 +47,26 @@ Critério de inclusão **ainda não satisfeito** para família independente: end
 - [ ] Protocolo de divisão por protocolo e janela cronológica congelado antes de execução.
 
 **No artigo:** inventário e motivação são proposta; nenhum candidato adicional recebeu rótulo e nenhum resultado novo de ML foi produzido aqui. Sem PDF.
+
+## Complemento de pesquisa: implantação declarada pela 0xbow (18/11/2026)
+
+**Fontes primárias conferidas em código/documentação da própria desenvolvedora:**
+
+- [`0xbow-io/privacy-pools-core/packages/contracts/README.md`](https://github.com/0xbow-io/privacy-pools-core/blob/main/packages/contracts/README.md): seção *Ethereum Mainnet Deployed Contracts* declara **ETH Pool `0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB`**, e **Entrypoint `0x6818809EefCe719E480a7526D76bD3e561526b46`**. Descreve depósitos públicos via Entrypoint, compromissos e saques privados com provas de conhecimento-zero / membership do conjunto aprovado.
+- [`0xbow-io/privacy-pools-website/src/config/chainData.ts`](https://github.com/0xbow-io/privacy-pools-website/blob/main/src/config/chainData.ts): configuração **Ethereum mainnet chainId=1** lista o mesmo endereço do pool ETH, `deploymentBlock: 22153707n` e relação com Entrypoint. **Esse número foi lido da configuração, não validado por RPC nem por hash da transação de criação.**
+- [Comunicado da 0xbow](https://0xbow.io/blog/privacy-pools-v2-is-live): registra lançamento do v1 em **março de 2025**. A arquitetura v2 não deve ser confundida com v1 ou projetada retrospectivamente para 15/01/2026.
+
+| Campo | Valor documental | Status de verificação |
+|---|---|---|
+| `familia` | Privacy Pools v1 da 0xbow | Documentação oficial |
+| `chainId` | 1 (Ethereum mainnet) | Configuração oficial; não consultado RPC |
+| `endereco_pool_ETH` | `0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB` | Duas fontes primárias da mesma organização; ainda **sem prova independente** |
+| `endereco_entrypoint` | `0x6818809EefCe719E480a7526D76bD3e561526b46` | Documental; proxy histórico não validado |
+| `bloco_deployment_config` | `22153707` | Declarado pela configuração atual; **não rechecado em explorador/RPC** |
+| `arquitetura` | Depósito, commitment, retirada privada com prova ZK e associação aprovada | Documentada; confirmar método e eventos da versão histórica |
+| `rotulo` | **CANDIDATO NÃO ROTULADO** | Não confirmado como mixer da classe estreita do EXP-05 |
+| `proximo_gate` | Checar tx de criação, código no bloco relevante e **eventos do pool no intervalo escolhido**; dois revisores e classificação de equivalência | Pendente |
+
+A tentativa de abrir páginas de endereço específicas no Blockscout nesta sessão não forneceu resposta utilizável. **Não afirmar que deployment ou eventos foram verificados pela blockchain por conta desse bloqueio.** A configuração `main` do repositório pode ter sofrido mudanças após 2025; para prova temporal, investigar commits/tag históricos, transações e, se necessário, fonte archive.
+
+**Não há dado novo de treino ou inferência.** O recorte de 15/01/2026 já foi explorado com o RF; qualquer reuso será descritivo, não validação cega. Antes de nova coleta ou teste comparativo, aprovar protocolo e congelar período/splits.

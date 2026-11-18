@@ -53,3 +53,9 @@ Permitidos: contagens e cobertura por grupo, diversidade de funções documentad
 Registrar apenas **objetivo, desenho e motivação** no [caderno científico](../manuscrito/CADERNO_CIENTIFICO_VIVO.md) enquanto não houver execução. Depois do piloto, acrescentar tabela comparativa somente se o manifesto e as evidências puderem sustentá-la. **Nenhum PDF de artigo é requerido nesta etapa.**
 
 **Próxima ação operacional:** conferir disponibilidade dos **scores individuais de 2026** e unicidade dos endereços no artefato já salvo, preparar script de seleção **sem executar coleta de transações**, congelar a amostra e gerar a matriz de controles.
+
+## Verificação documental de prontidão — 18/11/2026
+
+A inspeção do notebook histórico [07b](../../notebooks/legacy/07b_teste_2026_validacao_2020.ipynb) confirma que o código calculava `prob = modelo.predict_proba(...)` para todos os endereços elegíveis e exportava `sinalizados_teste_2026.csv` **somente para os sinalizados**. A listagem do diretório `results` no Drive oficial confirmou o CSV desses nove alertas, mas **não identificou arquivo de scores individuais de toda a população elegível** na listagem examinada. Portanto, **não tratar o score de cada não-alertado como disponível** nem marcar Gate 1 concluído.
+
+**Próxima busca não redundante:** verificar se as pastas de execução do notebook 07b ou seus arquivos de intermediários preservam uma tabela completa de scores. Se não houver, documentar o bloqueio e decidir separadamente se é justificada uma **inferência somente para seleção de controles**, com artefato/versão/limiar congelados — sem apresentá-la como novo teste temporal independente. Reutilizar o CSV dos nove positivos e não recalcular EXP-02B/02C.

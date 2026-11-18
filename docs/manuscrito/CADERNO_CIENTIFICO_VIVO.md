@@ -98,3 +98,25 @@ Foi preparado e versionado o [notebook EXP-03B](../../notebooks/16_EXP-03B_verif
 **Proposta conceitual, não resultado:** enquadrar detecção estatística de mixers como um sistema de **detecção de anomalias com triagem e investigação de alertas (analogia a IDS)**: transações → extração de características → score do RF → alerta → verificação de contrato, função, eventos e cobertura → status confirmado/indeterminado. **Não tratar mixer como intrusão, nem alertado como ilícito.** Abordagem complementar: análise de falsos alertas, viés de verificação e logs auditáveis (forense digital). **Pendente** conferir a ementa/roteiros exatos da disciplina antes de afirmar que ela cobriu IDS ou esse método.
 
 EXP-03B teve 12 respostas RPC HTTP sem estado histórico útil; a distinção entre `dados não disponíveis` e `código ausente` demonstra problema de **observabilidade e validade da evidência**, não desempenho do classificador. Novo [EXP-03C](../experiments/EXP-03C-protocolo-piloto-rpc-archive.md) foi **preparado, não executado**: rede chainId 1, WETH como referência de código no bloco histórico, depois apenas um controle congelado. Notebook [no Drive](https://drive.google.com/file/d/1V4u21nJV1gNuAv_7qhO6f1qLAkyJVMIl/view?usp=drivesdk). Não gerar novas métricas nem PDF do manuscrito.
+
+## Alinhamento confirmado com a disciplina Segurança em Redes de Computadores — 18/11/2026
+
+**Fonte:** PDFs fornecidos pelo pesquisador, slides do Prof. Hugo P. Kuribayashi, Unifesspa, 2026.4. São documentos locais recebidos na conversa; mantê-los com seus nomes originais e citar capítulo/página nos rascunhos. Não redistribuir slides do professor no GitHub sem autorização.
+
+### Evidência diretamente presente no material didático
+
+| Material | Páginas | Conteúdo comprovadamente ministrado/documentado | Relevância |
+|---|---|---|---|
+| `SRC-Cap0-Apresentação da Disciplina.pdf` | 6–8, 15–17 | Objetivos de CID, criptografia, firewalls/IDS; ementa cita IDS, NAT, VPN; estudo de caso com reprodução de artigo; entrega SBC 4–6 páginas via Overleaf | Requisitos acadêmicos e enquadramento; ementa **não** prova aula prática de IDS ministrada |
+| `SRC Cap2 - Parte 1.pdf` | 3, 5–13 | Integridade por hash criptográfico, efeito avalanche e SHA-256 (inclui referência a blockchain) | **Técnica diretamente implementada**: hashes SHA-256 dos insumos/outputs, manifesto e auditabilidade |
+| `SRC Cap4 - Parte 2.pdf` | 10–16 | Firewall por parâmetros de pacotes, filtro por conteúdo de aplicação, assinaturas/regex e WAF | **Analogia metodológica proposta**: triagem em camadas, features primeiro e evidência funcional depois; **não** chamar de firewall implementado |
+| `SRC Cap3 - Parte 1 e Parte 2.pdf` | introduções e assinatura | Criptografia simétrica/assimétrica, autenticidade e assinatura digital | Possível aprofundamento sobre verificações criptográficas de transações e prova de origem, **não implementado** nesta pesquisa |
+| `SRC Cap4 - Parte 1.pdf` | seções HTTPS, HMAC, X.509 | Protocolos de comunicação segura, integridade/autenticidade do canal | Potencial segurança de coleta RPC; não confundir HTTPS com autenticidade do estado histórico |
+
+### Enquadramento responsável da contribuição
+
+**Já feito:** (a) reprodução parcial do detector RF e suas limitações, (b) SHA-256 dos dados e evidências com manifesto, (c) triagem contextual qualitativa de alertas. **Proposto:** desenho de triagem em duas camadas, inspirado em filtros em níveis distintos, e eventual avaliação comparativa pré-registrada com ground truth independente. O fluxo pode ser relacionado ao ciclo de detecção/triagem de alertas de IDS **por analogia**, mas o pipeline atual **não é um IDS de rede** e não captura pacotes IP/TCP nem detecta invasões; mixer, por si, não caracteriza ataque ou crime.
+
+**Precisamos evitar uma afirmação excessiva:** a ementa prevê IDS, mas os capítulos anexados até aqui não demonstram exercícios/implementação de IDS específicos. Já a função SHA-256 está explicitamente nos slides e **foi operacionalizada** na trilha experimental.
+
+**Compromisso de entrega:** distinguir artigo acadêmico final da disciplina (resumo expandido 4–6 páginas formato SBC, Overleaf) da publicação científica mais longa que poderá resultar das extensões. **Não gerar PDF agora**, seguindo preferência expressa do pesquisador; continuar no caderno Markdown e reservar edição do artigo para a fase de consolidação.

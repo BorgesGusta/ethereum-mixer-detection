@@ -1,3 +1,9 @@
+# Execução preferencial: notebook pronto no Drive
+
+**Abra o [15_EXP-03_selecao_controles_2026.ipynb no Drive](https://drive.google.com/file/d/15pzH8sNmB8oNYnGRtk9WAiuztmRR5Mzv/view?usp=drivesdk)** (pasta `notebooks/00_ATIVOS`) usando **Abrir com → Google Colaboratory**, e depois **Ambiente de execução → Executar tudo**. O notebook já contém o procedimento de download/execução/upload descrito abaixo. **Não é necessário copiar a célula manualmente.**
+
+---
+
 # EXP-03 — Executar apenas a seleção de controles no Colab
 
 **Criado:** 18/11/2026. **Estado: execução REAL ainda pendente.** Não execute os notebooks EXP-02B/02C novamente. Não há nova coleta de transações nem treinamento nesta etapa.
@@ -96,3 +102,8 @@ print("PASTA DE RESULTADOS:", "https://drive.google.com/drive/folders/"+folder["
 - `manifesto_selecao.json`: SHA-256 dos três insumos, paridade dos nove alertas, limiar, critério de escolha, registro da execução e SHA-256 da saída.
 
 **Após executar:** registrar URL da pasta nova do Drive e conferir os hashes na sessão seguinte; somente então marcar D1.9 como seleção congelada e avaliar consultas externas de EXP-03. Não marcar a tarefa como concluída pela existência deste procedimento.
+
+
+### Notebook operacional publicado no Drive — 18/11/2026
+
+O notebook [`15_EXP-03_selecao_controles_2026.ipynb`](https://drive.google.com/file/d/15pzH8sNmB8oNYnGRtk9WAiuztmRR5Mzv/view?usp=drivesdk) foi enviado e conferido em `Projeto_Mixers_Ethereum/notebooks/00_ATIVOS/`, arquivo de **8.010 bytes** e SHA-256 **`f6a0dfb38eed7afcc4e3406ee6dac149a55f82916369d523c558ad56c10e48df`**. Possui seis células e executa o script fixado no commit `360d351962ef7aff7db7dc957fbeecbd182058df`. **Não executado no Colab até este registro**. Para rodar: abrir o arquivo com Google Colaboratory e selecionar **Ambiente de execução → Executar tudo**. A pasta de resultados só será criada após a paridade comprovada pelo script; ao finalizar, registrar o link aqui e conferir os outputs/manifesto. Nenhum arquivo anterior foi movido, renomeado ou sobrescrito.

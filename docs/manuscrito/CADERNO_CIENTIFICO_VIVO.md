@@ -71,3 +71,7 @@
 - **18/11/2026 — Proposta:** investigação contextual de alertas e não alertas para reduzir o viés de verificação. Não deve ser descrita como experimento executado até conter outputs novos e manifestos.
 
 **Regra de atualização:** toda entrada nova incluir data, autor/revisor quando houver, status `ideia / planejado / executado / auditado / refutado`, link de evidência e o que o resultado NÃO prova. Nunca apagar um registro histórico; corrigir por adendo datado.
+
+## Diário de pesquisa — preparação EXP-03, 18/11/2026
+
+**Status: implementação preparada, não executada.** O inventário do Drive e a inspeção do notebook legado 07b não localizaram exportação de scores completos para os não alertados. Confirmados os arquivos `features_2026-01-15.parquet`, `modelo_rf.joblib`, `sinalizados_teste_2026.csv` e o limiar previamente congelado 0,85. Foi versionado [script de seleção de controles](../../scripts/exp03_selecionar_controles.py) e [procedimento Colab](../experiments/EXP-03-como-executar-selecao-no-colab.md), com travas de paridade de elegíveis, endereços e scores. **A seleção ainda não foi executada**: ambiente local sem leitor Parquet, instalação indisponível. Não registrar número de controles escolhidos, comparações funcionais ou melhoria de classificador até a execução. Próxima ação é executar apenas esse script no Colab e auditar os novos arquivos, sem repetir o notebook 07b ou as coletas já concluídas.

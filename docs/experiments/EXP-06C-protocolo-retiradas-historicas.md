@@ -46,3 +46,7 @@ Podemos demonstrar uma transação individual de retirada no ETH pool da 0xbow *
 - **Testes locais:** sintaxe Python e cenários simulados de API/recibo passaram, sem consulta on-chain real. Notebook JSON válido (11 células).
 
 **Status final desta preparação:** pronto para executar no Colab, nenhum resultado on-chain do EXP-06C ainda foi gerado. Não gerar PDF/Overleaf nesta etapa.
+
+## Execução concluída — 19/11/2026
+
+[Resultados auditados EXP-06C](EXP-06C-resultados-auditoria-2026-11-19.md): 2 transações de sucesso com log do pool `Withdrawn` em 2025 e 2 em janela de 2026, verificadas individualmente. **A amostra não confirma desvinculação on-chain nem rótulo de mixer.** A cobertura da janela 2025 foi parcial por parada antecipada; na de 2026 a faixa de blocos foi consultada e somente 2 de 13 candidatos foram investigados individualmente. Integridade do JSON conciliada ao manifesto.

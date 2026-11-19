@@ -41,3 +41,7 @@ A API de *internal transactions* e endereços segue [especificação Swagger Blo
 - [ ] Investigar apenas lacunas específicas remanescentes, sem ampliar coleta ou conclusões retroativamente.
 
 **Regra:** este protocolo é diagnóstico, não comprovação automática de rótulo.
+
+## Resultado após execução — 19/11/2026
+
+**EXECUTADO E AUDITADO:** [Relatório EXP-06B](EXP-06B-resultados-auditoria-2026-11-19.md), [pasta real de resultados](https://drive.google.com/drive/folders/1-_iI6xOScAy0-a33Y2Rt94BdDFfBymyq), JSON SHA-256 coincidente com manifesto. A transação candidata continha **1 trace interno CREATE de sucesso** criando o pool ETH no bloco **22153714**. O campo `deploymentBlock=22153707` da configuração permanece divergente e sem explicação comprovada. A amostra limitada de **100 logs** é parcial, dos blocos 26405646–26449771, com **44 `Withdrawn`**, **1 `Ragequit`**, 49 `LeafInserted` e 6 `Deposited` decodificados pela API atual. Nenhum desses registros é prova direta de saque em 2025/15-01-2026. Nenhum rótulo ou score novo.

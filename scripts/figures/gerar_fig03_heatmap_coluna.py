@@ -63,8 +63,8 @@ def gerar(entrada: Path, saida: Path, dpi: int = 450):
             f=mat[i,j]
             rgba=cmap(norm(f))
             bright=.2126*rgba[0]+.7152*rgba[1]+.0722*rgba[2]
-            ax.text(j,i,f'{f:.3f}'.replace('.',','),ha='center',va='center',
-                    fontsize=8.2,fontweight='bold' if i==0 else 'medium',
+            ax.text(j,i,f'{f:.4f}'.replace('.',','),ha='center',va='center',
+                    fontsize=7.9,fontweight='bold' if i==0 else 'medium',
                     color='white' if bright < .57 else '#1D2C3D')
     fig.text(.035,.965,'EXP-07 · Comparação de modelos',fontsize=10.25,weight='bold',color='#1D3449',va='top')
     fig.text(.035,.895,'F1 médio em cinco folds · validação por linhas',fontsize=7.9,color='#617080',va='top')

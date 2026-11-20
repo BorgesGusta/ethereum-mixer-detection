@@ -66,3 +66,7 @@ Na raiz coexistem antigos diretórios (`00_artigo`, `01_dados_brutos`, `02_dados
 ### Atualização EXP-05 — confronto de pareceres (20/11/2026)
 
 Após autorização, confronto documental realizado: 5/9 classificações iguais, quatro divergências (R001, R002, R004, R005); [relatório preliminar](../experiments/EXP-05-comparacao-A-B-preliminar-2026-11-20.md); [matriz CSV](../../data/exp05/EXP-05_matriz_pareamento_A_B_2026-11-20.csv). Cópias A e B e o relatório operacional estão em pasta restrita de coordenação, sem alteração das fichas originais. Ficha A com apoio de IA ainda não aprovada caso a caso. **Adjudicação pendente e sem novos indicadores do detector.**
+
+### EXP-05 — parecer técnico das quatro divergências (20/11/2026)
+
+[R001/R002/R004/R005 — parecer com evidências e links](../experiments/EXP-05-adjudicacao-tecnica-preliminar-2026-11-20.md), [CSV com 12 transações e contagem dos 99 logs](../../data/exp05/EXP-05_evidencias_das_quatro_divergencias.csv) e [pasta Drive da documentação pós-confronto](https://drive.google.com/drive/folders/19CorxL0x6CmPSeWK0HpIS7f51-DVHR4J). Todos exibem comportamento compatível com ponte/relayer/roteamento e, portanto, são **candidatos a negativos**, não casos negativos formalmente adjudicados. A aprovação humana pós-confronto permanece pendente. Fichas A e B originais preservadas.

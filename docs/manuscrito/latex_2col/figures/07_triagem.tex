@@ -1,0 +1,9 @@
+\begin{tikzpicture}[every node/.style={font=\scriptsize},>=Latex]
+\tikzset{state/.style={draw=petrol,thick,rounded corners,fill=pale,minimum height=.5cm,text width=3.4cm,align=center}}
+\node[state] (a) {Alerta + evidências informadas};
+\node[state,below=2mm of a] (b) {Validar formatos e priorizar coleta};
+\node[state,below=2mm of b] (c) {Revisão humana: indeterminado};
+\node[state,below=2mm of c] (d) {Log JSONL + SHA-256 encadeado};
+\foreach \x/\y in {a/b,b/c,c/d}{\draw[->,ink] (\x)--(\y);}
+\node[font=\tiny,below=1mm of d,text=warn] {Não há bloqueio automático nem consulta RPC};
+\end{tikzpicture}

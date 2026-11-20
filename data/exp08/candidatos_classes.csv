@@ -1,0 +1,11 @@
+id,familia,contrato_ethereum,classe_proposta,estado,fonte_inicial,evidencia_existente,proxima_verificacao
+PPV1_ETH,Privacy Pools v1,0xF241d57C6DebAe225c0F2e6eA1529373C9A9C9fB,pool_privacidade_independente,candidato_nao_rotulado,https://github.com/0xbow-io/privacy-pools-core,EXP-06A/06B/06C depósitos criação e retiradas verificados,Equivalencia operacional e revisão independente
+RAILGUN,RAILGUN,,shield_unshield_arquitetura_distinta,candidato_nao_rotulado,https://github.com/Railgun-Community/deployments,Documentacao de shield/unshield,Identificar contrato mainnet versao tempo e taxonomia
+AZTEC,Aztec Connect,,rollup_bridge_privacidade,candidato_fora_do_recorte_2026,https://github.com/AztecProtocol/aztec-connect-contracts,Documentacao historica,Confirmar periodo e nao equiparar a pool
+TORNADO100,Tornado Cash ETH 100,,pool_mesma_familia,candidato_controle_nao_independente,https://docs.tornado.ws/general/deployments.html,Deployments documentais,Contrato e periodo historicos e verificacao
+OKXDEX,OKX DEX,,negativo_dificil_potencial,indeterminado_nao_rotulado,,EXP-02A associacao documental,Confirmar endereco funcao historica e isencao de mecanismo definido como classe positiva
+APECOIN,ApeCoin OFT Adapter,,negativo_dificil_potencial,indeterminado_nao_rotulado,,EXP-02A associacao documental,Confirmar endereco e funcao com fontes independentes
+SWAPPABLE,SwappableBridge,,negativo_dificil_potencial,indeterminado_nao_rotulado,,EXP-02A associacao documental,Confirmar contrato e semantica de bridging
+CHAINLINK,Chainlink CCIP Router,,negativo_dificil_potencial,indeterminado_nao_rotulado,,EXP-02A associacao documental,Verificar versao e funcao historica do router
+MCTXEN,MCT-XEN Batch Minter,,negativo_dificil_potencial,indeterminado_nao_rotulado,,EXP-02A associacao documental,Confirmar modelo de mint e se comparavel por periodo volume e fee
+WORMHOLE,Wormhole Relayer,,negativo_dificil_potencial,indeterminado_nao_rotulado,,EXP-02A associacao documental,Validar endereco e arquitetura relayer

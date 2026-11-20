@@ -1,0 +1,8 @@
+\begin{tikzpicture}[every node/.style={font=\scriptsize},>=Latex]
+\node[draw=warn,fill=warn!8,rounded corners,minimum width=1.1cm,minimum height=.7cm,align=center] (p) at (1.2,1.8) {1 contrato\\positivo};
+\node[draw=petrol,fill=pale,rounded corners,minimum width=1.35cm,minimum height=.7cm,align=center] (tr) at (-.2,0) {Treino\\18--19 dias};
+\node[draw=petrol,fill=pale,rounded corners,minimum width=1.35cm,minimum height=.7cm,align=center] (te) at (2.6,0) {Validação\\4--5 dias};
+\draw[->,warn,line width=1.2pt] (p.south west) -- (tr.north);
+\draw[->,warn,line width=1.2pt] (p.south east) -- (te.north);
+\node[draw=muted,fill=greybox,align=center,text width=4.0cm,rounded corners] at (1.2,-.9){5 de 5 folds repetem a identidade positiva};
+\end{tikzpicture}

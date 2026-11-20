@@ -1,0 +1,10 @@
+case_id,entidade_identificada,classe_A_rascunho_IA,classe_B_Bruno,pareamento,encaminhamento_nao_adjudicado
+R001,ApeCoin OFT Adapter,indeterminado,negativo_confirmado,divergencia,manter indeterminado ate verificar codigo e operacoes historicas
+R002,SwappableBridge,indeterminado,negativo_confirmado,divergencia,revisar logs e codigo do periodo antes de confirmar negativo
+R003,OKX DEX Proxy,indeterminado,indeterminado,igual,confirmar implementacao historica ou manter indeterminado
+R004,Wormhole Relayer,indeterminado,negativo_confirmado,divergencia,revisar proxy historico e logs para possivel negativo
+R005,Chainlink CCIP Router,indeterminado,negativo_confirmado,divergencia,revisar codigo e cobertura para possivel negativo
+R006,Tornado Cash 1 ETH,positivo_confirmado,positivo_confirmado,igual,pool conhecido positivo provisoriamente
+R007,MCT-XEN Proxy,indeterminado,indeterminado,igual,manter indeterminado sem implementacao verificada
+R008,Tornado Cash 10 ETH,positivo_confirmado,positivo_confirmado,igual,pool conhecido positivo provisoriamente
+R009,Tornado Cash 0.1 ETH,positivo_confirmado,positivo_confirmado,igual,pool conhecido positivo provisoriamente

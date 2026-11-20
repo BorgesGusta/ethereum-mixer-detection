@@ -1,0 +1,14 @@
+\begin{tikzpicture}[>=Latex, node distance=1.5mm, every node/.style={font=\footnotesize}, x=1cm, y=1cm]
+\tikzstyle{block}=[draw=petrol,very thick,rounded corners=2pt,fill=pale,align=center,minimum height=0.75cm,text width=2.15cm,inner sep=4pt]
+\tikzstyle{last}=[draw=ink,thick,rounded corners=2pt,fill=greybox,align=center,minimum height=0.75cm,text width=2.25cm,inner sep=4pt]
+\node[block] (a) {Ethereum\\Blockchair};
+\node[block,right=0.32cm of a] (b) {Pré-processamento\\e \\texttt{min\_tx}};
+\node[block,right=0.32cm of b] (c) {5 atributos\\e corpus rotulado};
+\node[block,right=0.32cm of c] (d) {RF + baselines\\(EXP-07)};
+\node[last,right=0.32cm of d] (e) {Alertas\\não são rótulos};
+\foreach \l/\r in {a/b,b/c,c/d,d/e} {\draw[->,line width=.8pt,ink] (\l)--(\r);}
+\node[last,below=.48cm of c] (f) {Auditoria funcional\\EXP-02 e EXP-06};
+\node[last,right=0.35cm of f] (g) {Triagem defensiva\\EXP-08 (offline)};
+\draw[->,line width=.8pt,ink] (e.south) |- (g.east);
+\draw[->,line width=.8pt,ink] (f)--(g);
+\end{tikzpicture}

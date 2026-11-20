@@ -62,3 +62,7 @@ Na raiz coexistem antigos diretórios (`00_artigo`, `01_dados_brutos`, `02_dados
 - Usar **dois notebooks de apresentação**; os experimentais originais continuam preservados.
 - Nunca incluir o índice privado do coordenador no pacote dos revisores ou no material de estudo.
 - Toda decisão de reorganização física deve ser acompanhada por tabela antes/depois com ID permanente, origem, destino, hash quando aplicável, autor e data.
+
+### Atualização EXP-05 — confronto de pareceres (20/11/2026)
+
+Após autorização, confronto documental realizado: 5/9 classificações iguais, quatro divergências (R001, R002, R004, R005); [relatório preliminar](../experiments/EXP-05-comparacao-A-B-preliminar-2026-11-20.md); [matriz CSV](../../data/exp05/EXP-05_matriz_pareamento_A_B_2026-11-20.csv). Cópias A e B e o relatório operacional estão em pasta restrita de coordenação, sem alteração das fichas originais. Ficha A com apoio de IA ainda não aprovada caso a caso. **Adjudicação pendente e sem novos indicadores do detector.**

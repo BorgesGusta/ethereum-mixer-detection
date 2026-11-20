@@ -1,0 +1,163 @@
+% ARTIGO INTEGRADO / TEXTO-FONTE LaTeX \u2014 20/11/2026
+% Opção A (solicitada): duas colunas para leitura e defesa; NÃO é o layout SBC tradicional.
+% Para submissão estrita SBC, alternar para \SBCtrue; esse layout fica com uma coluna.
+% Fontes dos números: EXP-01J, EXP-02A e EXP-07 auditados. Gráficos são descritivos.
+% NÃO usar métricas de F1 internas como generalização.
+\newif\ifSBC
+\SBCfalse % ALTERAR PARA \SBCtrue SE O PROFESSOR EXIGIR TEMPLATE SBC ORIGINAL.
+\ifSBC
+  \documentclass[12pt,a4paper]{article}
+\else
+  \documentclass[10pt,a4paper,twocolumn]{article}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx,booktabs,array,url,amsmath,microtype}
+\usepackage{times}
+\usepackage{xcolor}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,shapes.geometric}
+\pgfplotsset{compat=1.18}
+\definecolor{petrol}{HTML}{176B78}
+\definecolor{ink}{HTML}{293344}
+\definecolor{muted}{HTML}{64748B}
+\definecolor{pale}{HTML}{E8F4F5}
+\definecolor{greybox}{HTML}{E8ECF1}
+\definecolor{warn}{HTML}{AA5935}
+\ifSBC
+  \IfFileExists{sbc-template.sty}{\usepackage{sbc-template}}{%
+  \usepackage[a4paper,top=3.5cm,bottom=2.5cm,left=3cm,right=3cm]{geometry}
+  \providecommand{\inst}[1]{$^{#1}$}
+  \providecommand{\address}[1]{}
+  \providecommand{\email}[1]{}
+  \newenvironment{resumo}{\par\noindent\textbf{Resumo.}\ }{\par}}
+\else
+  \usepackage[a4paper,top=1.9cm,bottom=1.9cm,left=1.65cm,right=1.65cm]{geometry}
+  \setlength{\columnsep}{0.65cm}
+  \setlength{\parindent}{0.8em}
+  \setlength{\parskip}{2pt}
+  \setlength{\textfloatsep}{9pt plus 2pt minus 3pt}
+  \setlength{\floatsep}{7pt plus 2pt minus 2pt}
+  \setlength{\intextsep}{6pt plus 2pt minus 1pt}
+  \usepackage[font=small,labelfont=bf,skip=3pt]{caption}
+  \providecommand{\inst}[1]{$^{#1}$}
+  \providecommand{\address}[1]{}
+  \providecommand{\email}[1]{}
+  \newenvironment{resumo}{\par\noindent\textbf{Resumo.}\ }{\par}
+\fi
+\sloppy
+\title{Auditoria Reprodutível da Detecção de Mixers na Ethereum:\\ Sensibilidade, Validação e Triagem Defensiva}
+\author{Autores da equipe (preencher)\inst{1}\\\small Universidade Federal do Sul e Sudeste do Pará (Unifesspa) \\[-1pt]
+\small Marabá -- PA -- Brasil\\\small E-mails institucionais: preencher}
+\date{}
+\begin{document}
+\maketitle
+\begin{resumo}
+Contratos de privacidade na Ethereum podem compartilhar padrões transacionais com serviços legítimos, dificultando a interpretação de detectores estatísticos. Este trabalho reproduz e audita um método baseado em Random Forest para identificação de possíveis mixers, analisa a influência de filtros de elegibilidade, compara quatro classificadores e três subconjuntos de atributos e investiga evidências funcionais em um protocolo distinto. No recorte de 29/10/2020, a reprodução emitiu nove alertas, contra 63 reportados no estudo original, e identificou os três contratos Tornado Cash de referência. A validação interna comparativa alcançou F1 médio de 0,9778 com Random Forest; contudo, as 23 observações positivas pertencem ao mesmo contrato, presente simultaneamente nos conjuntos de treinamento e validação. Como aplicação de segurança, implementou-se um protótipo offline de triagem humana com registros verificáveis por encadeamento SHA-256. Os achados demonstram limitações de reprodutibilidade e validade externa, sem comprovar detecção de protocolos inéditos.
+\end{resumo}
+\renewcommand{\abstractname}{Abstract}\begin{abstract}
+Ethereum privacy contracts may resemble legitimate financial services in transaction-level features, complicating the interpretation of statistical alerts. We reproduce and audit a Random Forest mixer detector, examine eligibility filters, compare four classifiers across three feature subsets, and inspect on-chain evidence from a distinct privacy protocol. On October 29, 2020, our reproduction generated nine alerts versus 63 in the original study, recovering the three known Tornado Cash pools. In an internal experiment, Random Forest reached a mean F1 of 0.9778; however, all 23 positive observations originate from a single contract appearing in both training and validation folds. We additionally implement an offline, human-reviewed security triage prototype with SHA-256 hash-linked audit records. These results illustrate reproducibility and external-validity limitations rather than verified detection of previously unseen protocols.
+\end{abstract}
+
+\section{Introdução}
+A Ethereum disponibiliza publicamente transações e eventos de contratos inteligentes, mas a observabilidade de movimentações financeiras convive com demandas legítimas de privacidade. Serviços de mistura de fundos (\emph{mixers}) podem dificultar a associação direta entre um depósito e uma retirada, e diferem entre si quanto a contratos, provas criptográficas e modelo de interação. A classificação automática de um contrato como possível mixer não equivale à identificação de atividade ilícita nem prova, por si só, o mecanismo de anonimização executado.
+
+Leale e Sendin~\cite{leale2025} apresentaram um detector supervisionado com Random Forest, quatro características estatísticas e exemplos do Tornado Cash, relatando 63 endereços sinalizados em 29 de outubro de 2020, incluindo três contratos conhecidos. A repetição independente desse tipo de estudo exige conhecer a unidade de amostragem, a cobertura de chamadas internas, os critérios de elegibilidade e a origem dos rótulos; pequenas decisões de engenharia podem alterar a composição da população analisada.
+
+Este trabalho responde a três questões: \textbf{QP1}, em que medida a reprodução do método preserva o resultado do estudo de referência? \textbf{QP2}, como a escolha de atributos e classificadores influencia a validação interna e quais limites impedem inferência sobre novos contratos? \textbf{QP3}, como evidências on-chain podem apoiar uma triagem de segurança auditável sem converter uma pontuação de aprendizado de máquina em sanção automática? As contribuições são a documentação de uma divergência de reprodução, uma comparação exploratória com ablação e um protótipo defensivo acompanhado de trilha de auditoria.
+
+\section{Fundamentação e trabalhos relacionados}
+No estudo de referência~\cite{leale2025}, a unidade analisada é o endereço destinatário em uma janela diária. Para cada unidade, calculam-se a entropia dos valores transferidos, a entropia das taxas, a entropia dos valores internos e a média de chamadas por transação. A interpretação dessas medidas depende da origem dos campos e da presença de roteadores, \emph{traces} e chamadas internas. O Random Forest~\cite{breiman2001} agrega árvores de decisão e permite modelar relações não lineares, mas seu desempenho depende da representatividade das amostras.
+
+Trabalhos sobre taxonomia de mixers~\cite{barbereau2023} e inspeção de mecanismos de depósito e retirada~\cite{akopova2024} mostram por que tipos de serviços de privacidade não devem ser fundidos automaticamente em uma classe única. Uma aplicação de detecção contratual difere de tarefas como vinculação de contas, desanonimização e identificação de lavagem de dinheiro por incidente; métricas dessas tarefas não são comparáveis sem o mesmo alvo e conjunto de avaliação.
+
+\section{Metodologia}
+\begin{figure*}[t]\centering\input{figures/01_fluxo_metodologia.tex}\caption{Fluxo da pesquisa: o classificador produz alertas; a auditoria e a triagem exigem evidências adicionais. Desenho metodológico, não medições do modelo.}\label{fig:metodo}\end{figure*}
+
+\subsection{Reprodução e população observada}
+A reprodução utiliza exportações de transações da Ethereum, scripts versionados e arquivos Parquet preservados no Google Drive, com registros científicos e código em repositório Git. Para 29/10/2020, foram conferidas 1.114.702 transações, 230.658 destinatários distintos e 239 transações destinadas a três contratos Tornado Cash de referência (73, 55 e 111 transações, respectivamente). O pipeline (Fig.~\ref{fig:metodo}) aplica engenharia de características por destinatário e dia, seleção por número mínimo de transações e inferência do modelo. O método de referência utiliza quatro atributos; a comparação exploratória subsequente acrescenta \texttt{n\_tx} como quinta variável na configuração A.
+
+O treino consolidado contém 123 observações: 23 positivas, todas do mesmo contrato Tornado Cash de 10~ETH observado em dias distintos de março de 2025, e 100 negativas associadas a 100 contratos distintos observados em um único dia. O classificador de referência usa 100 árvores e profundidade máxima cinco. Resultados de março de 2025 utilizados na seleção de treino não constituem teste temporal independente. Nenhum endereço sinalizado em inferência é transformado automaticamente em novo exemplo rotulado.
+
+\subsection{Experimentos e critérios de validade}
+A análise de sensibilidade EXP-01J varia a elegibilidade mínima por transações recebidas. O EXP-02 investiga os alertas obtidos em 15/01/2026, usando documentação de contratos, transações amostrais e eventos; endereços não concluídos por auditoria permanecem \emph{indeterminados}. Os EXP-06A/B/C exploram, separadamente, o Privacy Pools v1 (0xbow), sem considerá-lo exemplo positivo equivalente ao Tornado Cash.
+
+No EXP-07, com protocolo definido antes da execução, treinam-se Random Forest, regressão logística, árvore de decisão e Gradient Boosting em três configurações: (A) cinco atributos, (B) quatro atributos excluindo \texttt{n\_tx} e (C) apenas as três entropias. Em cada uma das 12 combinações, cinco divisões estratificadas por \emph{linha} são reutilizadas entre algoritmos. Imputação e padronização, quando aplicáveis, ocorrem dentro de cada \emph{fold}. O agrupamento independente por contrato não é viável neste corpus porque existe apenas uma identidade positiva; portanto, a comparação é explicitamente \emph{interna e exploratória}.
+
+\section{Resultados}
+\subsection{Reprodução e sensibilidade}
+A Tabela~\ref{tab:replica} e a Fig.~\ref{fig:alertas} sintetizam o contraste entre o estudo original e a reprodução. As três instâncias Tornado Cash conhecidas foram localizadas em ambos os procedimentos, mas a contagem de alertas não coincidiu. Não se atribui a diferença a uma causa única nem se ajustam limiares retroativamente para aproximar 63.
+
+\begin{table*}[t]
+\centering\small
+\caption{Comparação do dia 29/10/2020. As contagens são de alertas, não métricas populacionais de classificação.}
+\label{tab:replica}
+\begin{tabular}{lrr}
+\toprule
+Indicador & Leale e Sendin & Reprodução \\
+\midrule
+Transações de entrada & 1.114.702 & 1.114.702 \\
+Destinatários distintos & 230.658 & 230.658 \\
+Alertas de possível mixer & 63 & 9 \\
+Pools Tornado de referência identificados & 3 de 3 & 3 de 3 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+Sob filtros mínimos de 1, 5, 10 e 20 transações, o EXP-01J registrou, respectivamente, 49, 14, 9 e 7 alertas. Essa sensibilidade afeta a quantidade de endereços passíveis de classificação e a comparação com outros estudos.
+\begin{figure}[t]\centering\input{figures/02_reproducao.tex}\caption{Alertas de possível mixer no dia de teste original: 63 versus 9. Em ambas as análises, 3 de 3 pools conhecidos foram sinalizados; outros alertas não são rotulados aqui como erros.}\label{fig:alertas}\end{figure}
+\begin{figure}[t]\centering\input{figures/03_sensibilidade.tex}\caption{EXP-01J: número de alertas conforme mínimo de transações, mantendo o contexto experimental. Apenas contagens; não são métricas de erro.}\label{fig:min_tx}\end{figure}
+ Na execução de janeiro de 2026, 20.214 entidades passaram pelo filtro e nove foram sinalizadas; três tinham referência documental ao Tornado Cash e seis estavam associados a outros tipos de serviço, incluindo DEX, bridges, roteadores e relayers. \textbf{Esses seis casos não são falsos positivos confirmados}: sua classificação permanece indeterminada e não permite calcular precision, recall ou F1 populacionais dessa data.
+\begin{figure}[t]\centering\input{figures/06_scores_2026.tex}\caption{Escores dos nove alertas de janeiro/2026, na ordem observada: três pools Tornado de referência e seis candidatos indeterminados (cores distinguem evidência conhecida, não acertos/erros). A pontuação não é prova de atividade ilícita.}\label{fig:scores}\end{figure}
+
+\subsection{Comparação de modelos e ablação}
+A Tabela~\ref{tab:f1} mostra os F1 médios dos cinco \emph{folds} para os doze arranjos do EXP-07, preservando as mesmas divisões entre modelos e conjuntos de características.
+
+\begin{table*}[t]
+\centering\small
+\caption{F1 médio \emph{interno} por classificador e grupo de atributos (EXP-07).}
+\label{tab:f1}
+\begin{tabular}{lrrr}
+\toprule
+Modelo & A: cinco & B: sem volume & C: entropias \\
+\midrule
+Random Forest & \textbf{0,9778} & \textbf{0,9778} & \textbf{0,9778} \\
+Árvore de decisão & 0,8870 & 0,9156 & 0,9159 \\
+Gradient Boosting & 0,8870 & 0,9156 & 0,9159 \\
+Regressão logística & 0,8095 & 0,8170 & 0,5452 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+\begin{figure*}[t]\centering\input{figures/04_mapa_f1.tex}\caption{Mapa de F1 médio \textbf{interno} em 12 combinações do EXP-07. As amostras positivas provêm de um único contrato presente em todos os folds; os valores não demonstram generalização externa.}\label{fig:f1}\end{figure*}
+
+
+O mapa da Fig.~\ref{fig:f1} explicita a comparação. O Random Forest reentreinado apresentou precision média interna de 1,0, recall médio de 0,96 e F1 médio de 0,9778 na configuração A. A retirada de \texttt{n\_tx} não alterou seu F1 médio neste conjunto. A regressão logística teve queda de F1 com apenas entropias. Esses números não quantificam a detecção de mixers desconhecidos e a ablação não identifica importância causal de atributos. Como esquematizado na Fig.~\ref{fig:vazamento}, em \textbf{todos os cinco folds}, o contrato positivo aparece tanto no treino quanto na validação; adicionalmente, os negativos vêm de apenas um dia, enquanto os positivos abrangem 23 dias. Essa estrutura cria dependências contratuais e temporais que podem inflar os resultados.
+\begin{figure}[t]\centering\input{figures/05_validez.tex}\caption{Limitação dos dados de treino: 23 positivos pertencentes ao mesmo contrato, presentes nos dois lados de todos os cinco folds. Esquema de identidade, não uma matriz de confusão.}\label{fig:vazamento}\end{figure}
+
+\subsection{Evidência on-chain e protótipo de segurança}
+No estudo exploratório do Privacy Pools v1, os experimentos EXP-06A/B/C recuperaram transações de depósito, um \emph{trace} de criação contratual e quatro transações históricas de sucesso com log do pool compatível com \texttt{Withdrawn}, sendo duas em blocos de 2025 e duas na janela delimitada de 2026. O recorte de 2025 foi interrompido após localizar candidatos; em 2026, apenas duas transações foram verificadas individualmente entre 13 eventos candidatos encontrados na janela. Não se verificou a equivalência integral entre a arquitetura desse protocolo e a classe binária do estudo de referência.
+
+Como demonstração de segurança, o EXP-08 implementa um protótipo \emph{offline} de triagem: recebe endereço, pontuação opcional e referências de evidência, exige revisão humana e grava decisões em JSONL, encadeadas por hashes SHA-256. Quatro testes locais foram aprovados, incluindo a detecção de adulteração intencional de um registro. O protótipo \emph{não consulta automaticamente a blockchain}, não alimenta um SIEM e não bloqueia contratos ou carteiras. O encadeamento local é verificável, mas a resistência à reescrita integral do histórico dependeria de ancoragem externa do hash terminal.
+\begin{figure}[t]\centering\input{figures/07_triagem.tex}\caption{Protótipo EXP-08: triagem offline, revisão humana e auditoria de integridade local. Integrações com blockchain e SIEM permanecem futuras.}\label{fig:triagem}\end{figure}
+
+\section{Discussão e ameaças à validade}
+A divergência entre 63 e nove alertas demonstra a necessidade de documentar filtros, normalização de atributos e cobertura de chamadas. A comparação interna reforça, de forma especialmente clara, a insuficiência de resultados de validação por linha quando todos os positivos derivam de um único contrato. Além disso, a ausência de rótulos históricos confiáveis para os demais alertas impede tratar contagens como taxas de erro ou associar automaticamente padrões financeiros à intenção ilícita.
+
+Os seis candidatos identificados entre alertas de 2026 são úteis para uma investigação de \emph{negativos difíceis}, mas constituem amostra condicionada ao próprio modelo; não formam um conjunto independente de teste. A ampliação de positivos requer revisão funcional de contratos de outras famílias, como Privacy Pools v1 e RAILGUN, e definição taxonômica anterior aos testes. Os resultados EXP-06 não comprovam desvinculação entre depositantes e destinatários, nem autorizam rótulo positivo sem revisão. O ciclo defensivo demonstrado deve, por isso, seguir \emph{observar, reunir evidências, revisar e registrar}, evitando decisões automáticas com base apenas no escore.
+
+Uma avaliação externa futura exigirá contratos positivos independentes, negativos difíceis confirmados por revisores, janelas cronológicas predefinidas e separação integral por contrato ou família. A comparação de modelos profundos (MLP ou GNN) somente será informativa após melhorar a diversidade e a qualidade desse corpus; não se justifica uma CNN apenas pelo número reduzido de atributos tabulares.
+
+\section{Conclusão}
+Esta auditoria reproduziu a identificação dos três pools Tornado Cash de referência, mas não a contagem original de alertas; mostrou a sensibilidade a filtros de transações e comparou quatro algoritmos sob três conjuntos de características. O maior F1 médio interno, 0,9778, deve ser interpretado à luz da presença de uma única identidade positiva nos dois lados da validação, e não como evidência de generalização a protocolos inéditos. A análise on-chain e o protótipo de triagem ilustram uma alternativa operacional prudente: correlacionar alertas a evidências verificáveis e manter a decisão sob revisão humana. A principal agenda futura é obter conjuntos rotulados por contrato e protocolo, com controles difíceis e períodos independentes.
+
+\paragraph{Disponibilidade dos artefatos.} Os protocolos, notebooks, scripts, arquivos de resultados e verificações de SHA-256 estão versionados no repositório \url{https://github.com/BorgesGusta/ethereum-mixer-detection}, ramo \texttt{docs/consolidacao-oficial-2026-11-17}. Dados brutos de grande volume e alguns artefatos são mantidos no Drive da equipe. Os casos da revisão cega EXP-05 não foram incorporados sem conclusão auditada.
+
+\begin{thebibliography}{9}
+\bibitem{leale2025} Leale, P. e Sendin, I. S. (2025). Uma Proposta de Algoritmo para a Detecção de Mixers na Ethereum. \emph{Anais Estendidos do XXV Simpósio Brasileiro de Cibersegurança (SBSeg)}, WTICG.
+\bibitem{breiman2001} Breiman, L. (2001). Random forests. \emph{Machine Learning}, 45(1):5--32.
+\bibitem{barbereau2023} Barbereau, T. J., Ermolaev, E., Brennecke, M., Hartwich, E. e Sedlmeir, J. (2023). Beyond a Fistful of Tumblers: Toward a Taxonomy of Ethereum-based Mixers. \emph{Proceedings of ICIS 2023}.
+\bibitem{akopova2024} Akopova, A. (2024). Detecting Ethereum Mixers. American University of Armenia. \url{https://cse.aua.am/wp-content/uploads/2024/05/DetectingEthereumMixers.pdf}.
+\bibitem{bow2025} 0xbow (2025--2026). Privacy Pools: contratos e documentação técnica. \url{https://github.com/0xbow-io/privacy-pools-core}.
+\end{thebibliography}
+\end{document}

@@ -185,3 +185,5 @@ Foram preparados [roteiro prático EXP-08](../experiments/EXP-08-roteiro-demonst
 
 **Pendências para fechar 20/11:** (1) substituir placeholders de autoria e afiliação; (2) compilar com template oficial da disciplina/SBC e conferir 4–6 páginas, corrigir eventuais inconsistências de formatação; (3) revisar com equipe o conteúdo técnico, a bibliografia e o enquadramento do professor; (4) validar eventual EXP-05 apenas se os dois revisores concluírem revisão cega; (5) demonstrar o EXP-08 e preparar fala; (6) não reportar os seis alertas 2026 como falsos positivos nem F1 interno como generalização. Não abrir nova coleta.
 
+
+**Atualização de ensino:** [Guia final de estudo e defesa](GUIA_FINAL_ESTUDO_NOTEBOOKLM_ARTIGO_2026-11-19.md) publicado no [Drive da biblioteca NotebookLM](https://drive.google.com/file/d/1A6k71bdT_Cw30vcjSPz-jGhxPtaRbezV/view), em `07_MANUSCRITO_E_SUBMISSAO`. Guia cobre linha de investigação EXP-01 a EXP-08, definições dos resultados, limitações, perguntas possíveis do professor e roteiro de defesa. Presença no Drive **não comprova importação como fonte dentro do NotebookLM**.

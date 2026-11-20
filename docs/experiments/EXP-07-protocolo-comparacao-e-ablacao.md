@@ -47,3 +47,7 @@ Nenhum dado de 2020 ou 2026 é tratado como ground truth externo. Os alertas da 
 - Se matrizes revelarem único contrato positivo: apresentar a tabela de 12 combinações explicitamente como diagnóstico interno, sem qualquer afirmação de capacidade de reconhecer protocolos diferentes. Se resultados forem inconsistentes/insuficientes, dar prioridade a reprodução e auditoria on-chain já validadas.
 - Não readequar os grupos de atributos ou classificadores após inspecionar os resultados sem registrar novo experimento.
 - Entrega: 20/11/2026; **não aguardar novos datasets ou revisão EXP-05 para completar artigo**.
+
+## Execução concluída (19/11/2026, 20/11 00:36 UTC)
+
+[Resultados e interpretação EXP-07 v2](EXP-07-resultados-auditoria-2026-11-19.md), [Drive oficial](https://drive.google.com/drive/folders/1iekmCwwXYnxzYNp7jJ6Ye5S4O56UN0b6). Rodaram **12 combinações com cinco folds (60 resultados)**. A auditoria encontrou apenas **um contrato positivo**, 23 linhas, e 100 contratos negativos com 100 linhas; a separação por contrato não é viável para validação de positivos independentes. **Todos os cinco folds compartilham o contrato positivo entre treino/teste**. RF teve F1 médio interno 0,9778 nas três ablações; métrica estritamente exploratória, sem generalização. Conferidos todos os hashes do manifesto. Nenhum rótulo novo ou avaliação externa.

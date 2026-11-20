@@ -1,5 +1,6 @@
 % ARTIGO — versão de revisão textual e integração de figuras, 20/11/2026
-% Fonte principal para Overleaf; não depende dos diagramas TikZ anteriores.
+% Fonte principal para Overleaf: as cinco figuras ficam inline junto ao texto
+% (pacote cuted + ambiente strip para duas colunas).
 % PADRÃO DA REVISÃO: DUAS COLUNAS; não confundir com o template SBC oficial.
 % Para testar uma coluna, alterar \SBCfalse -> \SBCtrue e fornecer sbc-template.sty
 % se o professor exigir a formatação original da SBC.
@@ -16,7 +17,7 @@
 \usepackage{graphicx,booktabs,array,amsmath,microtype,xcolor,url}
 \usepackage{times}
 \usepackage{caption}
-\usepackage{placeins} % impede gráficos de cruzar a seção de discussão
+\usepackage{cuted,flafter,float} % permite figuras de largura total junto ao trecho correspondente
 \ifSBC
   \IfFileExists{sbc-template.sty}{\usepackage{sbc-template}}{%
     \usepackage[a4paper,top=3.5cm,bottom=2.5cm,left=3cm,right=3cm]{geometry}
@@ -65,14 +66,16 @@ O estudo reproduzido utiliza entropias dos valores transferidos, das taxas e dos
 Pesquisas sobre a taxonomia de mixers~\cite{barbereau2023} e trabalhos recentes envolvendo grafos~\cite{jeong2025,fu2026} abordam outras unidades de análise, como endereços, transações e relações entre operações. Essas tarefas não devem ser confundidas com a classificação binária de contratos adotada aqui. Nosso objetivo é verificar os limites de uma reprodução e documentar como alertas podem orientar uma investigação, sem afirmar que reconstruímos fluxos completos de recursos ou treinamos modelos de grafos.
 
 \section{Metodologia}
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=.98\textwidth]{figures/fig01_metodologia.png}
-  \caption{Etapas da pesquisa, da coleta de dados à análise e à triagem defensiva. Diagrama do procedimento, não uma medição do desempenho.}
-  \label{fig:metodo}
-\end{figure*}
+
 
 A pesquisa foi organizada em etapas complementares (Fig.~\ref{fig:metodo}). Primeiro, reproduzimos o detector do estudo-base; depois, examinamos sua sensibilidade a escolhas de filtragem e aplicamos a abordagem a uma janela temporal adicional. Na sequência, comparamos classificadores e características sobre a matriz rotulada disponível. Por fim, analisamos evidências de contratos e implementamos um procedimento de triagem voltado à integridade dos registros. Os dados, scripts, parâmetros e saídas foram preservados para permitir a revisão dos resultados.
+
+\begin{strip}
+  \centering
+  \includegraphics[width=.92\textwidth]{figures/fig01_metodologia.png}
+  \captionof{figure}{Etapas da pesquisa, da coleta de dados à análise e à triagem defensiva. Diagrama do procedimento, não uma medição do desempenho.}
+  \label{fig:metodo}
+\end{strip}
 
 \subsection{Dados e critérios de seleção}
 Na amostra de 29/10/2020, foram examinadas 1.114.702 transações e 230.658 destinatários distintos. Destas transações, 239 tinham como destino três contratos Tornado Cash de referência, distribuídas em 73, 55 e 111 operações. A unidade de análise do detector é o destinatário observado em uma janela diária; para cada unidade, calculam-se atributos comportamentais antes da classificação. O Random Forest de referência utiliza 100 árvores com profundidade máxima cinco.
@@ -90,7 +93,7 @@ Os EXP-06A/B/C investigaram eventos e transações históricos do Privacy Pools 
 \subsection{Reprodução e sensibilidade ao filtro}
 A reprodução identificou os mesmos três contratos Tornado Cash conhecidos no conjunto de referência, mas apresentou uma diferença relevante no volume total de alertas: nove, ante 63 descritos por Leale e Sendin (Tabela~\ref{tab:replica}). Essa divergência não deve ser atribuída a uma causa isolada sem comprovação; decisões sobre elegibilidade, cobertura de chamadas e construção dos atributos podem alterar a população analisada.
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \caption{Reprodução da avaliação de 29/10/2020. Os totais representam alertas, não precisão ou taxa de erro.}
 \label{tab:replica}
@@ -107,51 +110,61 @@ Tornado Cash conhecido & 3/3 & 3/3\\
 \end{tabular}
 \end{table}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=.92\textwidth]{figures/fig04_sensibilidade_exp01j.png}
-\caption{Sensibilidade ao número mínimo de transações no EXP-01J: variação da população elegível e da quantidade de alertas. A redução de alertas não constitui evidência de aumento da precisão.}
-\label{fig:min_tx}
-\end{figure*}
+
 
 O efeito do filtro é mostrado na Fig.~\ref{fig:min_tx}. Ao aumentar \(min_{tx}\) de 1 para 20, os destinatários elegíveis diminuíram de 230.658 para 2.464, enquanto os alertas passaram de 49 para sete. Em todos os cenários, os três contratos de referência permaneceram sinalizados. Assim, o filtro modifica simultaneamente a cobertura e a quantidade de candidatos encaminhados para análise; não é possível deduzir, apenas dessas contagens, que um cenário seja mais preciso.
+
+\begin{strip}
+  \centering
+  \includegraphics[width=.90\textwidth]{figures/fig04_sensibilidade_exp01j.png}
+  \captionof{figure}{Sensibilidade ao número mínimo de transações no EXP-01J: variação da população elegível e da quantidade de alertas. A redução de alertas não constitui evidência de aumento da precisão.}
+  \label{fig:min_tx}
+\end{strip}
 
 Na amostra de 15/01/2026, 20.214 entidades atenderam ao critério de elegibilidade e nove foram sinalizadas. Três tinham correspondência documental com contratos Tornado Cash. As outras seis estavam associadas a serviços como roteadores, pontes e aplicações financeiras, mas não receberam confirmação suficiente para serem classificadas como falsos positivos. Por esse motivo, não calculamos precisão, revocação ou F1 populacionais para essa janela.
 
 \subsection{Distribuição dos dados e comparação dos modelos}
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=.86\textwidth]{figures/fig02_pca_exp07.png}
-  \caption{Projeção PCA exploratória das 123 observações rotuladas do EXP-07, após padronização das cinco características. Os 23 positivos correspondem a um único contrato. A projeção não é teste de generalização.}
-  \label{fig:pca}
-\end{figure*}
+
 
 A Fig.~\ref{fig:pca} apresenta uma visão bidimensional da matriz de treinamento por Análise de Componentes Principais (PCA). As duas primeiras componentes explicam aproximadamente 71,8\% da variância das cinco características padronizadas. Embora permita observar a distribuição dos exemplos e regiões de proximidade entre as classes, a figura não representa uma rede de transações nem valida o reconhecimento de novos contratos: os 23 pontos positivos derivam de uma única identidade, observada em dias diferentes.
 
-\begin{figure*}[t]
+\begin{strip}
   \centering
-  \includegraphics[width=.83\textwidth]{figures/fig03_heatmap_exp07.png}
-  \caption{F1 médio interno das 12 combinações de classificador e atributos no EXP-07. Os cinco \emph{folds} foram divididos por linha e compartilham a mesma identidade positiva entre treino e validação.}
-  \label{fig:f1}
-\end{figure*}
+  \includegraphics[width=.77\textwidth]{figures/fig02_pca_exp07.png}
+  \captionof{figure}{Projeção PCA exploratória das 123 observações rotuladas do EXP-07, após padronização das cinco características. Os 23 positivos correspondem a um único contrato. A projeção não é teste de generalização.}
+  \label{fig:pca}
+\end{strip}
+
+
 
 A comparação dos modelos está sintetizada na Fig.~\ref{fig:f1}. O Random Forest obteve F1 médio interno de 0,9778 nas configurações A, B e C. A árvore de decisão e o Gradient Boosting variaram de 0,8870 a aproximadamente 0,916, enquanto a regressão logística caiu para 0,5452 quando recebeu somente as entropias. Portanto, a exclusão de \texttt{n\_tx} não reduziu o F1 médio do Random Forest nesta matriz; isso, entretanto, não prova que a característica seja desnecessária em outros períodos ou contratos.
+
+% Iniciar a próxima página para impedir que o heatmap e sua legenda sejam separados.
+\clearpage
+\begin{strip}
+  \centering
+  \includegraphics[width=.76\textwidth]{figures/fig03_heatmap_exp07.png}
+  \captionof{figure}{F1 médio interno das 12 combinações de classificador e atributos no EXP-07. Os cinco \emph{folds} foram divididos por linha e compartilham a mesma identidade positiva entre treino e validação.}
+  \label{fig:f1}
+\end{strip}
 
 A principal restrição está no desenho amostral. Em todos os cinco \emph{folds}, observações do mesmo contrato positivo aparecem em treinamento e validação. Além disso, os negativos foram coletados em um único dia, ao passo que os positivos correspondem a 23 dias. Essas dependências podem favorecer o reconhecimento de padrões específicos do contrato e da coleta, sem medir a capacidade de detectar protocolos independentes. A reprodução sobre 2020 também é retrospectiva, não uma simulação prospectiva de monitoramento.
 
 \subsection{Evidência on-chain e triagem de segurança}
 A análise complementar do Privacy Pools v1 localizou registros históricos de depósitos e quatro transações bem-sucedidas contendo eventos de retirada do protocolo, em recortes de 2025 e 2026. A verificação foi parcial e não demonstrou equivalência funcional completa com os contratos usados para treinar o detector. Por isso, esses registros sustentam a investigação do funcionamento do protocolo, mas não autorizam incorporá-lo automaticamente como novo positivo.
 
-\begin{figure*}[t]
-  \centering
-  \includegraphics[width=.94\textwidth]{figures/fig05_triagem_exp08.png}
-  \caption{Arquitetura do protótipo EXP-08: validação de entradas, priorização da revisão e registros encadeados por SHA-256. Não há bloqueio automático nem consulta \emph{on-chain} integrada.}
-  \label{fig:triagem}
-\end{figure*}
+
 
 Como aplicação prática à segurança, o EXP-08 implementou o fluxo apresentado na Fig.~\ref{fig:triagem}. O protótipo recebe um contrato, uma pontuação opcional e referências declaradas de evidências; valida formatos, orienta a coleta ou revisão e grava um histórico JSONL com hashes SHA-256 encadeados. Quatro testes automatizados foram aprovados, inclusive um que identifica adulteração de registro. Entretanto, os links e indicadores recebidos não são verificados por RPC, e o encadeamento local não impede uma reescrita integral do histórico sem ancoragem externa do hash final. Trata-se, portanto, de uma demonstração de integridade e triagem, não de um sistema operacional de monitoramento ou bloqueio.
 
-\FloatBarrier
+\begin{strip}
+  \centering
+  \includegraphics[width=.88\textwidth]{figures/fig05_triagem_exp08.png}
+  \captionof{figure}{Arquitetura do protótipo EXP-08: validação de entradas, priorização da revisão e registros encadeados por SHA-256. Não há bloqueio automático nem consulta \emph{on-chain} integrada.}
+  \label{fig:triagem}
+\end{strip}
+
+
 \section{Discussão e ameaças à validade}
 Os resultados apontam três cuidados interligados. Primeiro, a discrepância entre nove e 63 alertas reforça a necessidade de explicitar filtros, atributos e critérios de reprodução. Segundo, os valores elevados de F1 interno não substituem uma avaliação independente por contrato ou por família de protocolos. Terceiro, os alertas de 2026 exigem investigação contextual antes de receberem rótulos: um contrato legítimo pode apresentar volume, entropia ou padrões de chamadas semelhantes aos de um serviço de privacidade.
 
